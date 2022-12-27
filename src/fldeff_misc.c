@@ -1292,7 +1292,7 @@ u8 CreateRecordMixingLights(void)
 {
     u8 spriteId;
 
-    LoadSpritePalette(&sSpritePalette_RecordMixLights);
+    LoadSpritePalette(&sSpritePalette_RecordMixLights, FALSE);
 
     spriteId = CreateSprite(&sSpriteTemplate_RecordMixLights, 0, 0, 82);
 

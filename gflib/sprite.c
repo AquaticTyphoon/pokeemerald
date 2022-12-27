@@ -1584,7 +1584,7 @@ void FreeAllSpritePalettes(void)
         sSpritePaletteTags[i] = TAG_NONE;
 }
 
-u8 LoadSpritePalette(const struct SpritePalette *palette)
+u8 LoadSpritePalette(const struct SpritePalette *palette, bool8 isDayNight)
 {
     u8 index = IndexOfSpritePaletteTag(palette->tag);
 
@@ -1609,7 +1609,7 @@ void LoadSpritePalettes(const struct SpritePalette *palettes)
 {
     u8 i;
     for (i = 0; palettes[i].data != NULL; i++)
-        if (LoadSpritePalette(&palettes[i]) == 0xFF)
+        if (LoadSpritePalette(&palettes[i], FALSE) == 0xFF)
             break;
 }
 

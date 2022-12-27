@@ -565,7 +565,7 @@ static void Task_LoadShowMons(u8 taskId)
         temp[3] = RGB(20, 20, 31); // light blue
 
         LoadSpriteSheet(sSpriteSheet_MonBg);
-        LoadSpritePalette(sSpritePalette_MonBg);
+        LoadSpritePalette(sSpritePalette_MonBg, FALSE);
 
         gMain.state++;
         break;

@@ -1108,18 +1108,12 @@ static u8 GetSelectionIdFromPartyId(u8 partyId)
     return partyId - numEggs;
 }
 
-// Unused
-static u8 GetPartyIdFromSelectionId_(u8 selectionId)
-{
-    return GetPartyIdFromSelectionId(selectionId);
-}
-
 static void LoadAndCreateUpDownSprites(void)
 {
     u16 i, spriteId;
 
     LoadSpriteSheet(&sSpriteSheet_UpDown);
-    LoadSpritePalette(&sSpritePalette_UpDown);
+    LoadSpritePalette(&sSpritePalette_UpDown, FALSE);
     sInfo->numEnhancements = 0;
 
     for (i = 0; i < CONDITION_COUNT; i++)
@@ -1217,7 +1211,7 @@ static void UpdateMonPic(u8 loadId)
         LoadConditionMonPicTemplate(&spriteSheet, &spriteTemplate, &spritePal);
         spriteSheet.data = sMenu->partySheets[loadId];
         spritePal.data = sMenu->partyPalettes[loadId];
-        sMenu->curMonPalette = LoadSpritePalette(&spritePal);
+        sMenu->curMonPalette = LoadSpritePalette(&spritePal, FALSE);
         sMenu->curMonSheet = LoadSpriteSheet(&spriteSheet);
         spriteId = CreateSprite(&spriteTemplate, 38, 104, 0);
         sMenu->curMonSpriteId = spriteId;
@@ -1305,7 +1299,7 @@ static void LoadAndCreateSelectionIcons(void)
 
     LoadConditionSparkle(&spriteSheet2, &spritePal2);
     LoadSpriteSheet(&spriteSheet2);
-    LoadSpritePalette(&spritePal2);
+    LoadSpritePalette(&spritePal2, FALSE);
 }
 
 static bool8 LoadUsePokeblockMenuGfx(void)
@@ -1609,7 +1603,7 @@ static void LoadConditionGfx(void)
     spriteSheet.size = 0x800;
     spriteSheet.tag = TAG_CONDITION;
     LoadCompressedSpriteSheet(&spriteSheet);
-    LoadSpritePalette(&spritePalette);
+    LoadSpritePalette(&spritePalette, FALSE);
 }
 
 static void CreateConditionSprite(void)

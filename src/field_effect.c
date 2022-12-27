@@ -782,7 +782,7 @@ void FieldEffectScript_LoadTiles(u8 **script)
 void FieldEffectScript_LoadFadedPalette(u8 **script)
 {
     struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
-    LoadSpritePalette(palette);
+    LoadSpritePalette(palette, FALSE);
     UpdatePaletteGammaType(IndexOfSpritePaletteTag(palette->tag), GAMMA_NORMAL);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
     (*script) += 4;
@@ -791,7 +791,7 @@ void FieldEffectScript_LoadFadedPalette(u8 **script)
 void FieldEffectScript_LoadPalette(u8 **script)
 {
     struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
-    LoadSpritePalette(palette);
+    LoadSpritePalette(palette, FALSE);
     (*script) += 4;
 }
 
@@ -910,7 +910,7 @@ void LoadTrainerGfx_TrainerCard(u8 gender, u16 palOffset, u8 *dest)
 
 u8 AddNewGameBirchObject(s16 x, s16 y, u8 subpriority)
 {
-    LoadSpritePalette(&sSpritePalette_NewGameBirch);
+    LoadSpritePalette(&sSpritePalette_NewGameBirch, FALSE);
     return CreateSprite(&sSpriteTemplate_NewGameBirch, x, y, subpriority);
 }
 

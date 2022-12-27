@@ -1238,7 +1238,7 @@ static void CreateResultsTextWindowSprites(void)
     for (i = 0; i < (int)ARRAY_COUNT(sSpriteSheets_ResultsTextWindow); i++)
         LoadSpriteSheet(&sSpriteSheets_ResultsTextWindow[i]);
 
-    LoadSpritePalette(&sSpritePalette_ResultsTextWindow);
+    LoadSpritePalette(&sSpritePalette_ResultsTextWindow, FALSE);
 
     // Create sprites for the two window types, each made up of 4 sprites
     for (i = 0; i < (int)ARRAY_COUNT(sSpriteSheets_ResultsTextWindow); i++)

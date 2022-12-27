@@ -1542,7 +1542,7 @@ static void LoadPyramidBagPalette(void)
     LZDecompressWram(gBattlePyramidBag_Pal, palPtr);
     spritePalette.data = palPtr + (gSaveBlock2Ptr->frontier.lvlMode * 16);
     spritePalette.tag = TAG_PYRAMID_BAG;
-    LoadSpritePalette(&spritePalette);
+    LoadSpritePalette(&spritePalette, FALSE);
     Free(palPtr);
 }
 

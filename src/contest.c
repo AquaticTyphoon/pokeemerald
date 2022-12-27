@@ -3945,7 +3945,7 @@ static void CreateNextTurnSprites(void)
 {
     s32 i;
 
-    LoadSpritePalette(&sSpritePalette_NextTurn);
+    LoadSpritePalette(&sSpritePalette_NextTurn, FALSE);
     for (i = 0; i < CONTESTANT_COUNT; i++)
     {
         LoadCompressedSpriteSheet(&sSpriteSheet_NextTurn[i]);
@@ -3963,7 +3963,7 @@ static void CreateApplauseMeterSprite(void)
     u8 spriteId;
 
     LoadCompressedSpriteSheet(&sSpriteSheet_ApplauseMeter);
-    LoadSpritePalette(&sSpritePalette_ApplauseMeter);
+    LoadSpritePalette(&sSpritePalette_ApplauseMeter, FALSE);
     spriteId = CreateSprite(&sSpriteTemplate_ApplauseMeter, 30, 44, 1);
     gSprites[spriteId].invisible = TRUE;
     eContest.applauseMeterSpriteId = spriteId;
@@ -4124,7 +4124,7 @@ static u8 CreateContestantBoxBlinkSprites(u8 contestant)
     u8 x = gContestantTurnOrder[contestant] * 40 + 32;
 
     LoadCompressedSpriteSheet(&sSpriteSheets_ContestantsTurnBlinkEffect[contestant]);
-    LoadSpritePalette(&sSpritePalettes_ContestantsTurnBlinkEffect[contestant]);
+    LoadSpritePalette(&sSpritePalettes_ContestantsTurnBlinkEffect[contestant], FALSE);
     spriteId1 = CreateSprite(&sSpriteTemplates_ContestantsTurnBlinkEffect[contestant], 184, x, 29);
     spriteId2 = CreateSprite(&sSpriteTemplates_ContestantsTurnBlinkEffect[contestant], 248, x, 29);
     gSprites[spriteId2].oam.tileNum += 64;

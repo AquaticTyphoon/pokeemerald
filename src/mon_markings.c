@@ -600,7 +600,7 @@ static struct Sprite *CreateMarkingComboSprite(u16 tileTag, u16 paletteTag, cons
     sheet.size = size * 0x80;
 
     LoadSpriteSheet(&sheet);
-    LoadSpritePalette(&sprPalette);
+    LoadSpritePalette(&sprPalette, FALSE);
 
     spriteId = CreateSprite(&template, 0, 0, 0);
     if (spriteId != MAX_SPRITES)

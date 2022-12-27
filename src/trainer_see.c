@@ -727,7 +727,7 @@ u8 FldEff_HeartIcon(void)
 {
     u8 spriteId;
 
-    LoadSpritePalette(&gObjectEventPal_Npc1);
+    LoadSpritePalette(&gObjectEventPal_Npc1, FALSE);
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)

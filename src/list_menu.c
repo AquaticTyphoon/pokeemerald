@@ -1090,7 +1090,7 @@ u8 AddScrollIndicatorArrowPair(const struct ScrollArrowsTemplate *arrowInfo, u16
     {
         spritePal.data = sRedInterface_Pal;
         spritePal.tag = arrowInfo->palTag;
-        LoadSpritePalette(&spritePal);
+        LoadSpritePalette(&spritePal, FALSE);
     }
 
     taskId = CreateTask(Task_ScrollIndicatorArrowPair, 0);
@@ -1336,7 +1336,7 @@ static u8 ListMenuAddRedOutlineCursorObject(struct CursorStruct *cursor)
     {
         spritePal.data = sRedInterface_Pal;
         spritePal.tag = cursor->palTag;
-        LoadSpritePalette(&spritePal);
+        LoadSpritePalette(&spritePal, FALSE);
     }
 
     taskId = CreateTask(Task_RedOutlineCursor, 0);
@@ -1421,7 +1421,7 @@ static u8 ListMenuAddRedArrowCursorObject(struct CursorStruct *cursor)
     {
         spritePal.data = sRedInterface_Pal;
         spritePal.tag = cursor->palTag;
-        LoadSpritePalette(&spritePal);
+        LoadSpritePalette(&spritePal, FALSE);
     }
 
     taskId = CreateTask(Task_RedArrowCursor, 0);

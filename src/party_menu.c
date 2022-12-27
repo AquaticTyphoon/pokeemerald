@@ -4057,7 +4057,7 @@ static void ShowOrHideHeldItemSprite(u16 item, struct PartyMenuBox *menuBox)
 void LoadHeldItemIcons(void)
 {
     LoadSpriteSheet(&sSpriteSheet_HeldItem);
-    LoadSpritePalette(&sSpritePalette_HeldItem);
+    LoadSpritePalette(&sSpritePalette_HeldItem, FALSE);
 }
 
 void DrawHeldItemIconsForTrade(u8 *partyCounts, u8 *partySpriteIds, u8 whichParty)

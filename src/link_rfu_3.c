@@ -790,7 +790,7 @@ void LoadWirelessStatusIndicatorSpriteGfx(void)
 {
     if (GetSpriteTileStartByTag(sWirelessStatusIndicatorSpriteSheet.tag) == 0xFFFF)
         LoadCompressedSpriteSheet(&sWirelessStatusIndicatorSpriteSheet);
-    LoadSpritePalette(&sWirelessStatusIndicatorSpritePalette);
+    LoadSpritePalette(&sWirelessStatusIndicatorSpritePalette, FALSE);
     gWirelessStatusIndicatorSpriteId = SPRITE_NONE;
 }
 

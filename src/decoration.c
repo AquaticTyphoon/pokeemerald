@@ -2038,7 +2038,7 @@ static u8 gpu_pal_decompress_alloc_tag_and_upload(struct PlaceDecorationGraphics
     SetDecorSelectionBoxOamAttributes(data->decoration->shape);
     SetDecorSelectionBoxTiles(data);
     CopyPalette(data->palette, ((u16 *)gTilesetPointer_SecretBaseRedCave->metatiles)[(data->decoration->tiles[0] * NUM_TILES_PER_METATILE) + 7] >> 12);
-    LoadSpritePalette(&sSpritePal_PlaceDecoration);
+    LoadSpritePalette(&sSpritePal_PlaceDecoration, FALSE);
     return CreateSprite(&sDecorationSelectorSpriteTemplate, 0, 0, 0);
 }
 
@@ -2100,7 +2100,7 @@ static u8 AddDecorationIconObjectFromObjectEvent(u16 tilesTag, u16 paletteTag, u
         LoadSpriteSheet(&sheet);
         palette.data = sPlaceDecorationGraphicsDataBuffer.palette;
         palette.tag = paletteTag;
-        LoadSpritePalette(&palette);
+        LoadSpritePalette(&palette, FALSE);
         template = Alloc(sizeof(struct SpriteTemplate));
         *template = sDecorWhilePlacingSpriteTemplate;
         template->tileTag = tilesTag;
@@ -2684,9 +2684,9 @@ static void InitializeCameraSprite1(struct Sprite *sprite)
 static void LoadPlayerSpritePalette(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
-        LoadSpritePalette(&sSpritePal_PuttingAwayCursorBrendan);
+        LoadSpritePalette(&sSpritePal_PuttingAwayCursorBrendan, FALSE);
     else
-        LoadSpritePalette(&sSpritePal_PuttingAwayCursorMay);
+        LoadSpritePalette(&sSpritePal_PuttingAwayCursorMay, FALSE);
 }
 
 static void FreePlayerSpritePalette(void)

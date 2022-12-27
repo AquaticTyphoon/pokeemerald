@@ -708,8 +708,8 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     u8 numberOfBattlers = 0;
     u8 i;
 
-    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
-    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0], FALSE);
+    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1], FALSE);
     if (!IsDoubleBattle())
     {
         LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
@@ -736,8 +736,8 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
     {
         if (state == 1)
         {
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
-            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0], FALSE);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1], FALSE);
         }
         else if (!IsDoubleBattle())
         {

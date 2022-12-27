@@ -228,7 +228,7 @@ static void LoadLogoGfx(void)
     LZ77UnCompVram(sLogoCenter_Tilemap, tilemap);
     LoadPalette(sLogo_Pal, 0xF0, sizeof(sLogo_Pal));
     LoadCompressedSpriteSheet(&sSpriteSheet_LogoCircles);
-    LoadSpritePalette(&sSpritePalette_LogoCircles);
+    LoadSpritePalette(&sSpritePalette_LogoCircles, FALSE);
 }
 
 static u8 CreateSlidingLogoCircleSprite(s16 x, s16 y, u8 delayX, u8 delayY, s8 speedX, s8 speedY, u8 spriteAnimNum)

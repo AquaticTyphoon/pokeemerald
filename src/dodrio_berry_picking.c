@@ -3831,8 +3831,8 @@ static void LoadDodrioGfx(void)
         LoadSpriteSheet(&sheet);
         Free(ptr);
     }
-    LoadSpritePalette(&normal);
-    LoadSpritePalette(&shiny);
+    LoadSpritePalette(&normal, FALSE);
+    LoadSpritePalette(&shiny, FALSE);
 }
 
 static void CreateDodrioSprite(struct DodrioGame_MonInfo * monInfo, u8 playerId, u8 id, u8 numPlayers)
@@ -4025,7 +4025,7 @@ static void CreateStatusBarSprites(void)
 
         sStatusBar = AllocZeroed(sizeof(*sStatusBar));
         LoadSpriteSheet(&sheet);
-        LoadSpritePalette(&pal);
+        LoadSpritePalette(&pal, FALSE);
         for (i = 0; i < NUM_STATUS_SQUARES; i++)
             sStatusBar->spriteIds[i] = CreateSprite(&template, (i * 16) + 48, -8 - (i * 8), 0);
     }
@@ -4156,7 +4156,7 @@ static void LoadBerryGfx(void)
         LoadSpriteSheet(&sheet);
     }
 
-    LoadSpritePalette(&pal);
+    LoadSpritePalette(&pal, FALSE);
     Free(ptr);
 }
 
@@ -4314,7 +4314,7 @@ static void CreateCloudSprites(void)
         };
 
         LoadSpriteSheet(&sheet);
-        LoadSpritePalette(&pal);
+        LoadSpritePalette(&pal, FALSE);
         for (i = 0; i < NUM_CLOUDS; i++)
         {
             sCloudSpriteIds[i] = AllocZeroed(4);

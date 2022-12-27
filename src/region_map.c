@@ -1393,7 +1393,7 @@ void CreateRegionMapCursor(u16 tileTag, u16 paletteTag)
         template.callback = SpriteCB_CursorMapZoomed;
     }
     LoadSpriteSheet(&sheet);
-    LoadSpritePalette(&palette);
+    LoadSpritePalette(&palette, FALSE);
     spriteId = CreateSprite(&template, 0x38, 0x48, 0);
     if (spriteId != MAX_SPRITES)
     {
@@ -1457,7 +1457,7 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
         palette.data = sRegionMapPlayerIcon_MayPal;
     }
     LoadSpriteSheet(&sheet);
-    LoadSpritePalette(&palette);
+    LoadSpritePalette(&palette, FALSE);
     spriteId = CreateSprite(&template, 0, 0, 1);
     sRegionMap->playerIconSprite = &gSprites[spriteId];
     if (!sRegionMap->zoomed)
@@ -1822,7 +1822,7 @@ static void LoadFlyDestIcons(void)
     sheet.size = sizeof(sFlyMap->tileBuffer);
     sheet.tag = TAG_FLY_ICON;
     LoadSpriteSheet(&sheet);
-    LoadSpritePalette(&sFlyTargetIconsSpritePalette);
+    LoadSpritePalette(&sFlyTargetIconsSpritePalette, FALSE);
     CreateFlyDestIcons();
     TryCreateRedOutlineFlyDestIcons();
 }

@@ -564,7 +564,7 @@ void CB2_InitTitleScreen(void)
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
         LoadPalette(gTitleScreenEmeraldVersionPal, 0x100, 0x20);
-        LoadSpritePalette(&sSpritePalette_PressStart[0]);
+        LoadSpritePalette(&sSpritePalette_PressStart[0], FALSE);
         gMain.state = 2;
         break;
     case 2:

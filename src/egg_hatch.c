@@ -538,7 +538,7 @@ static void CB2_LoadEggHatch(void)
     case 3:
         LoadSpriteSheet(&sEggHatch_Sheet);
         LoadSpriteSheet(&sEggShards_Sheet);
-        LoadSpritePalette(&sEgg_SpritePalette);
+        LoadSpritePalette(&sEgg_SpritePalette, FALSE);
         gMain.state++;
         break;
     case 4:

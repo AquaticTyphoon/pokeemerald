@@ -856,7 +856,7 @@ void ApplyWeatherColorMapToPal(u8 paletteIndex)
 
 void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette)
 {
-    LoadSpritePalette(palette);
+    LoadSpritePalette(palette, FALSE);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
 }
 

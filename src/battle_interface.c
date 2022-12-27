@@ -1489,8 +1489,8 @@ u8 CreatePartyStatusSummarySprites(u8 battlerId, struct HpAndStatus *partyInfo, 
 
     LoadCompressedSpriteSheetUsingHeap(&sStatusSummaryBarSpriteSheet);
     LoadSpriteSheet(&sStatusSummaryBallsSpriteSheet);
-    LoadSpritePalette(&sStatusSummaryBarSpritePal);
-    LoadSpritePalette(&sStatusSummaryBallsSpritePal);
+    LoadSpritePalette(&sStatusSummaryBarSpritePal, FALSE);
+    LoadSpritePalette(&sStatusSummaryBallsSpritePal, FALSE);
 
     summaryBarSpriteId = CreateSprite(&sStatusSummaryBarSpriteTemplates[isOpponent], bar_X, bar_Y, 10);
     SetSubspriteTables(&gSprites[summaryBarSpriteId], sStatusSummaryBar_SubspriteTable_Enter);

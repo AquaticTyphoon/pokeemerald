@@ -1774,9 +1774,6 @@ static void LoadChooseBoxMenuGfx(struct ChooseBoxMenu *menu, u16 tileTag, u16 pa
         {}
     };
 
-    if (loadPal) // Always false
-        LoadSpritePalette(&palette);
-
     LoadSpriteSheets(sheets);
     sChooseBoxMenu = menu;
     menu->tileTag = tileTag;
@@ -3843,7 +3840,7 @@ static bool8 InitPokeStorageWindows(void)
 
 static void LoadWaveformSpritePalette(void)
 {
-    LoadSpritePalette(&sWaveformSpritePalette);
+    LoadSpritePalette(&sWaveformSpritePalette, FALSE);
 }
 
 static void InitPalettesAndSprites(void)
@@ -3948,7 +3945,7 @@ static void CreateDisplayMonSprite(void)
         if (tileStart == 0)
             break;
 
-        palSlot = LoadSpritePalette(&palette);
+        palSlot = LoadSpritePalette(&palette, FALSE);
         if (palSlot == 0xFF)
             break;
 

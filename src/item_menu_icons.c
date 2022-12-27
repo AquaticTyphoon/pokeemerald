@@ -498,7 +498,7 @@ void AddSwitchPocketRotatingBallSprite(s16 rotationDirection)
 {
     u8 *spriteId = &gBagMenu->spriteIds[ITEMMENUSPRITE_BALL];
     LoadSpriteSheet(&sRotatingBallTable);
-    LoadSpritePalette(&sRotatingBallPaletteTable);
+    LoadSpritePalette(&sRotatingBallPaletteTable, FALSE);
     *spriteId = CreateSprite(&sRotatingBallSpriteTemplate, 16, 16, 0);
     gSprites[*spriteId].data[0] = rotationDirection;
 }

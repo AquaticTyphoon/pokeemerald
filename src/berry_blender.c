@@ -996,8 +996,8 @@ static bool8 LoadBerryBlenderGfx(void)
     case 9:
         LoadSpriteSheet(&sSpriteSheet_CountdownNumbers);
         LoadSpriteSheet(&sSpriteSheet_Start);
-        LoadSpritePalette(&sSpritePal_PlayerArrow);
-        LoadSpritePalette(&sSpritePal_BlenderMisc);
+        LoadSpritePalette(&sSpritePal_PlayerArrow, FALSE);
+        LoadSpritePalette(&sSpritePal_BlenderMisc, FALSE);
         Free(sBerryBlender->tilesBuffer);
         sBerryBlender->loadGfxState = 0;
         return TRUE;
@@ -2245,7 +2245,7 @@ static void Blender_DummiedOutFunc(s16 bgX, s16 bgY)
 
 static bool8 AreBlenderBerriesSame(struct BlenderBerry* berries, u8 a, u8 b)
 {
-    // First check to itemId is pointless (and wrong anyway?), always false when this is called
+    // First check to itemId is pointless (and wrong anyway?), always FALSE when this is called
     // Only used to determine if two enigma berries are equivalent
     if (berries[a].itemId != berries[b].itemId
      || (StringCompare(berries[a].name, berries[b].name) == 0

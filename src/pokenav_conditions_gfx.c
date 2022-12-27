@@ -812,7 +812,7 @@ static void CreateConditionMonPic(u8 id)
         LoadConditionMonPicTemplate(&sprSheet, &sprTemplate, &sprPal);
         sprSheet.data = GetConditionMonPicGfx(id);
         sprPal.data = GetConditionMonPal(id);
-        menu->monPalIndex = LoadSpritePalette(&sprPal);
+        menu->monPalIndex = LoadSpritePalette(&sprPal, FALSE);
         menu->monGfxTileStart = LoadSpriteSheet(&sprSheet);
         spriteId = CreateSprite(&sprTemplate, 38, 104, 0);
         menu->monPicSpriteId = spriteId;

@@ -212,7 +212,7 @@ static void StaticCountdown_CreateSprites(u8 taskId, s16 *data)
     struct Sprite *sprite;
 
     LoadCompressedSpriteSheet(&sSpriteSheet_321Start_Static[tSpriteSheetId]);
-    LoadSpritePalette(&sSpritePalette_321Start_Static[tSpritePalId]);
+    LoadSpritePalette(&sSpritePalette_321Start_Static[tSpritePalId], FALSE);
     for (i = 0; i < tNumSprites; i++)
         tSpriteIds(i) = CreateSprite(&sSpriteTemplate_StaticCountdown[tSpriteTemplateId], tX, tY, tSubpriority);
     for (i = 0; i < tNumSprites; i++)
@@ -610,7 +610,7 @@ static void Load321StartGfx(u16 tileTag, u16 palTag)
     spritePalette.tag = palTag;
 
     LoadCompressedSpriteSheet(&spriteSheet);
-    LoadSpritePalette(&spritePalette);
+    LoadSpritePalette(&spritePalette, FALSE);
 }
 
 static const struct OamData sOamData_Numbers =

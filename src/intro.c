@@ -2049,7 +2049,7 @@ static void Task_Scene3_LoadKyogre(u8 taskId)
     LZDecompressVram(gIntroKyogre_Tilemap, (void *)(BG_CHAR_ADDR(3)));
     LZDecompressVram(gIntroKyogreBg_Tilemap, (void *)(BG_SCREEN_ADDR(28)));
     LoadCompressedSpriteSheet(sSpriteSheet_Bubbles);
-    LoadSpritePalette(sSpritePalette_Bubbles);
+    LoadSpritePalette(sSpritePalette_Bubbles, FALSE);
     BeginNormalPaletteFade(PALETTES_ALL & ~1, 0, 16, 0, RGB_WHITEALPHA);
     gTasks[taskId].func = Task_Scene3_Kyogre;
     gTasks[taskId].tState = 0;

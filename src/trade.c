@@ -2195,11 +2195,11 @@ static bool8 LoadTradeMenuSpriteSheetsAndPalettes(void)
         sTradeMenuData->timer++;
         break;
     case GFXTAG_MENU_TEXT_COUNT:
-        LoadSpritePalette(&sSpritePalette_TradeScreenText);
+        LoadSpritePalette(&sSpritePalette_TradeScreenText, FALSE);
         sTradeMenuData->timer++;
         break;
     case GFXTAG_MENU_TEXT_COUNT + 1:
-        LoadSpritePalette(&sCursor_SpritePalette);
+        LoadSpritePalette(&sCursor_SpritePalette, FALSE);
         sTradeMenuData->timer++;
         break;
     case GFXTAG_MENU_TEXT_COUNT + 2:
@@ -2856,7 +2856,7 @@ void CB2_LinkTrade(void)
     case 9:
         LoadTradeSequenceSpriteSheetsAndPalettes();
         LoadSpriteSheet(&sPokeBallSpriteSheet);
-        LoadSpritePalette(&sPokeBallSpritePalette);
+        LoadSpritePalette(&sPokeBallSpritePalette, FALSE);
         gMain.state++;
         break;
     case 10:
@@ -2981,7 +2981,7 @@ static void CB2_InGameTrade(void)
     case 9:
         LoadTradeSequenceSpriteSheetsAndPalettes();
         LoadSpriteSheet(&sPokeBallSpriteSheet);
-        LoadSpritePalette(&sPokeBallSpritePalette);
+        LoadSpritePalette(&sPokeBallSpritePalette, FALSE);
         gMain.state++;
         break;
     case 10:
@@ -3249,8 +3249,8 @@ static void LoadTradeSequenceSpriteSheetsAndPalettes(void)
     LoadSpriteSheet(&sSpriteSheet_LinkMonShadow);
     LoadSpriteSheet(&sSpriteSheet_CableEnd);
     LoadSpriteSheet(&sSpriteSheet_GbaScreen);
-    LoadSpritePalette(&sSpritePalette_LinkMon);
-    LoadSpritePalette(&sSpritePalette_Gba);
+    LoadSpritePalette(&sSpritePalette_LinkMon, FALSE);
+    LoadSpritePalette(&sSpritePalette_Gba, FALSE);
 }
 
 // Buffers "[Pokemon] will be sent to [Trainer]" strings

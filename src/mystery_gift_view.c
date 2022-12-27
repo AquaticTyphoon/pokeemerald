@@ -498,7 +498,7 @@ static void CreateCardSprites(void)
     if (sWonderCardData->card.maxStamps != 0 && sWonderCardData->card.type == CARD_TYPE_STAMP)
     {
         LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_StampShadow);
-        LoadSpritePalette(&sSpritePalettes_StampShadow[sWonderCardData->gfx->stampShadowPal]);
+        LoadSpritePalette(&sSpritePalettes_StampShadow[sWonderCardData->gfx->stampShadowPal], FALSE);
         for (; i < sWonderCardData->card.maxStamps; i++)
         {
             sWonderCardData->stampSpriteIds[i][0] = SPRITE_NONE;

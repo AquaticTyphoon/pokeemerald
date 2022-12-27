@@ -401,7 +401,7 @@ static void CB2_InitLearnMove(void)
     CreateLearnableMovesList();
 
     LoadSpriteSheet(&sMoveRelearnerSpriteSheet);
-    LoadSpritePalette(&sMoveRelearnerPalette);
+    LoadSpritePalette(&sMoveRelearnerPalette, FALSE);
     CreateUISprites();
 
     sMoveRelearnerStruct->moveListMenuTask = ListMenuInit(&gMultiuseListMenuTemplate, sMoveRelearnerMenuSate.listOffset, sMoveRelearnerMenuSate.listRow);
@@ -426,7 +426,7 @@ static void CB2_InitLearnMoveReturnFromSelectMove(void)
     CreateLearnableMovesList();
 
     LoadSpriteSheet(&sMoveRelearnerSpriteSheet);
-    LoadSpritePalette(&sMoveRelearnerPalette);
+    LoadSpritePalette(&sMoveRelearnerPalette, FALSE);
     CreateUISprites();
 
     sMoveRelearnerStruct->moveListMenuTask = ListMenuInit(&gMultiuseListMenuTemplate, sMoveRelearnerMenuSate.listOffset, sMoveRelearnerMenuSate.listRow);

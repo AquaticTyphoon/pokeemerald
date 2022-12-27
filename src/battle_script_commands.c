@@ -1697,7 +1697,7 @@ static void Cmd_adjustnormaldamage(void)
     gBattlescriptCurrInstr++;
 }
 
-// The same as adjustnormaldamage except it doesn't check for false swipe move effect.
+// The same as adjustnormaldamage except it doesn't check for FALSE swipe move effect.
 static void Cmd_adjustnormaldamage2(void)
 {
     u8 holdEffect, param;
@@ -6136,7 +6136,7 @@ static void PutMonIconOnLvlUpBanner(void)
     iconPalSheet.tag = TAG_LVLUP_BANNER_MON_ICON;
 
     LoadSpriteSheet(&iconSheet);
-    LoadSpritePalette(&iconPalSheet);
+    LoadSpritePalette(&iconPalSheet, FALSE);
 
     spriteId = CreateSprite(&sSpriteTemplate_MonIconOnLvlUpBanner, 256, 10, 0);
     gSprites[spriteId].sDestroy = FALSE;

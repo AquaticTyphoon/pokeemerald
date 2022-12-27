@@ -714,7 +714,7 @@ static void CreateAreaMarkerSprites(void)
     static s16 numSprites;
 
     LoadSpriteSheet(&sAreaMarkerSpriteSheet);
-    LoadSpritePalette(&sAreaMarkerSpritePalette);
+    LoadSpritePalette(&sAreaMarkerSpritePalette, FALSE);
     numSprites = 0;
     for (i = 0; i < sPokedexAreaScreen->numSpecialAreas; i++)
     {
@@ -763,7 +763,7 @@ static void LoadAreaUnknownGraphics(void)
     };
     LZ77UnCompWram(gPokedexAreaScreenAreaUnknown_Gfx, sPokedexAreaScreen->areaUnknownGraphicsBuffer);
     LoadSpriteSheet(&spriteSheet);
-    LoadSpritePalette(&sAreaUnknownSpritePalette);
+    LoadSpritePalette(&sAreaUnknownSpritePalette, FALSE);
 }
 
 static void CreateAreaUnknownSprites(void)

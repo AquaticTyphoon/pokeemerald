@@ -48,7 +48,7 @@ void LoadCompressedSpritePalette(const struct CompressedSpritePalette *src)
     LZ77UnCompWram(src->data, gDecompressionBuffer);
     dest.data = (void *) gDecompressionBuffer;
     dest.tag = src->tag;
-    LoadSpritePalette(&dest);
+    LoadSpritePalette(&dest, FALSE);
 }
 
 void LoadCompressedSpritePaletteOverrideBuffer(const struct CompressedSpritePalette *src, void *buffer)
@@ -58,7 +58,7 @@ void LoadCompressedSpritePaletteOverrideBuffer(const struct CompressedSpritePale
     LZ77UnCompWram(src->data, buffer);
     dest.data = buffer;
     dest.tag = src->tag;
-    LoadSpritePalette(&dest);
+    LoadSpritePalette(&dest, FALSE);
 }
 
 void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffer, s32 species)
@@ -290,7 +290,7 @@ bool8 LoadCompressedSpritePaletteUsingHeap(const struct CompressedSpritePalette 
     dest.data = buffer;
     dest.tag = src->tag;
 
-    LoadSpritePalette(&dest);
+    LoadSpritePalette(&dest, FALSE);
     Free(buffer);
     return FALSE;
 }

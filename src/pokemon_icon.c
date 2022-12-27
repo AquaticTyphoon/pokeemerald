@@ -1136,25 +1136,14 @@ void LoadMonIconPalettes(void)
 {
     u8 i;
     for (i = 0; i < ARRAY_COUNT(gMonIconPaletteTable); i++)
-        LoadSpritePalette(&gMonIconPaletteTable[i]);
-}
-
-// unused
-void SafeLoadMonIconPalette(u16 species)
-{
-    u8 palIndex;
-    if (species > NUM_SPECIES)
-        species = INVALID_ICON_SPECIES;
-    palIndex = gMonIconPaletteIndices[species];
-    if (IndexOfSpritePaletteTag(gMonIconPaletteTable[palIndex].tag) == 0xFF)
-        LoadSpritePalette(&gMonIconPaletteTable[palIndex]);
+        LoadSpritePalette(&gMonIconPaletteTable[i], FALSE);
 }
 
 void LoadMonIconPalette(u16 species)
 {
     u8 palIndex = gMonIconPaletteIndices[species];
     if (IndexOfSpritePaletteTag(gMonIconPaletteTable[palIndex].tag) == 0xFF)
-        LoadSpritePalette(&gMonIconPaletteTable[palIndex]);
+        LoadSpritePalette(&gMonIconPaletteTable[palIndex], FALSE);
 }
 
 void FreeMonIconPalettes(void)
@@ -1162,16 +1151,6 @@ void FreeMonIconPalettes(void)
     u8 i;
     for (i = 0; i < ARRAY_COUNT(gMonIconPaletteTable); i++)
         FreeSpritePaletteByTag(gMonIconPaletteTable[i].tag);
-}
-
-// unused
-void SafeFreeMonIconPalette(u16 species)
-{
-    u8 palIndex;
-    if (species > NUM_SPECIES)
-        species = INVALID_ICON_SPECIES;
-    palIndex = gMonIconPaletteIndices[species];
-    FreeSpritePaletteByTag(gMonIconPaletteTable[palIndex].tag);
 }
 
 void FreeMonIconPalette(u16 species)

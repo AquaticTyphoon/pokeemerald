@@ -2690,7 +2690,7 @@ static void LoadSpriteSheetsAndPalettes(struct PokemonJumpGfx *jumpGfx)
         LoadCompressedSpriteSheet(&sCompressedSpriteSheets[i]);
 
     for (i = 0; i < ARRAY_COUNT(sSpritePalettes); i++)
-        LoadSpritePalette(&sSpritePalettes[i]);
+        LoadSpritePalette(&sSpritePalettes[i], FALSE);
 
     jumpGfx->vinePalNumDownswing = IndexOfSpritePaletteTag(PALTAG_1);
     jumpGfx->vinePalNumUpswing = IndexOfSpritePaletteTag(PALTAG_2);
