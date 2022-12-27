@@ -16,6 +16,7 @@
 #include "constants/coins.h"
 #include "constants/contest.h"
 #include "constants/daycare.h"
+#include "constants/time.h"
 #include "constants/decorations.h"
 #include "constants/easy_chat.h"
 #include "constants/event_objects.h"
@@ -571,6 +572,7 @@ gStdScripts_End::
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
 
+
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
 	.include "data/scripts/new_game.inc"
@@ -1023,6 +1025,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/scripts/item_ball_scripts.inc"
 	.include "data/scripts/profile_man.inc"
 	.include "data/scripts/day_care.inc"
+
 	.include "data/scripts/flash.inc"
 	.include "data/scripts/players_house.inc"
 	.include "data/scripts/berry_blender.inc"

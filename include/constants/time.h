@@ -1,0 +1,17 @@
+#ifndef GUARD_CONSTANTS_TIME_H
+#define GUARD_CONSTANTS_TIME_H
+
+#define TIME_DAWN 0
+#define TIME_MID_DAY 12
+#define TIME_DUSK 18
+#define TIME_MID_NIGHT 24
+
+#define DAY_SUNDAY 0
+#define DAY_MONDAY 1
+#define DAY_TUESDAY 2
+#define DAY_WEDNESDAY 3
+#define DAY_THURSDAY 4
+#define DAY_FRIDAY 5
+#define DAY_SATURDAY 6
+
+#endif // GUARD_CONSTANTS_TIME_H

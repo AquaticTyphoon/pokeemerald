@@ -93,6 +93,7 @@ SECTIONS {
         src/main_menu.o(.text);
         src/battle_controllers.o(.text);
         src/decompress.o(.text);
+        src/time.o(.text);
         src/digit_obj_util.o(.text);
         src/battle_bg.o(.text);
         src/battle_main.o(.text);
