@@ -16,6 +16,7 @@
 #include "tv.h"
 #include "constants/rgb.h"
 #include "constants/metatile_behaviors.h"
+#include "time.h"
 
 struct ConnectionFlags
 {
@@ -867,19 +868,22 @@ void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u16 size)
 
     if (tileset)
     {
-        if (tileset->isSecondary == FALSE)
-        {
-            LoadPalette(&black, destOffset, 2);
-            LoadPalette(tileset->palettes[0] + 1, destOffset + 1, size - 2);
+        if(ShouldTintOverworld()){
+            if (tileset->isSecondary){
+                LoadPaletteDayNightTileSet(tileset->palettes[NUM_PALS_IN_PRIMARY], destOffset, size);
+            }else{
+                LoadPalette(&black, destOffset, 2);
+                LoadPaletteDayNight(tileset->palettes[0] + 1, destOffset + 1, size - 2);
+            }
+        }else{
+            if (tileset->isSecondary){
+                LoadPalette(tileset->palettes[NUM_PALS_IN_PRIMARY], destOffset, size);
+            }else{
+                LoadPalette(&black, destOffset, 2);
+                LoadPalette(tileset->palettes[0] + 1, destOffset + 1, size - 2);
+            }
         }
-        else if (tileset->isSecondary == TRUE)
-        {
-            LoadPalette(tileset->palettes[NUM_PALS_IN_PRIMARY], destOffset, size);
-        }
-        else
-        {
-            LoadCompressedPalette((const u32 *)tileset->palettes, destOffset, size);
-        }
+        
     }
 }
 
