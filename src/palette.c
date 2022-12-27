@@ -87,6 +87,13 @@ void LoadCompressedPalette(const u32 *src, u16 offset, u16 size)
     CpuCopy16(gPaletteDecompressionBuffer, &gPlttBufferUnfaded[offset], size);
     CpuCopy16(gPaletteDecompressionBuffer, &gPlttBufferFaded[offset], size);
 }
+void LoadPaletteDayNight(const void *src, u16 offset, u16 size)
+{
+    CpuCopy16(src, &gPlttBufferUnfaded[offset], size);
+    TintPalette_CustomTone(&gPlttBufferUnfaded[offset], size , 500, 330, 310);
+    CpuCopy16(src, &gPlttBufferFaded[offset], size);
+    TintPalette_CustomTone(&gPlttBufferFaded[offset], size , 500, 330, 310);
+}
 
 void LoadPalette(const void *src, u16 offset, u16 size)
 {

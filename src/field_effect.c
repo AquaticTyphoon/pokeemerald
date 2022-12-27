@@ -31,6 +31,7 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "time.h"
 
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
 
@@ -782,7 +783,7 @@ void FieldEffectScript_LoadTiles(u8 **script)
 void FieldEffectScript_LoadFadedPalette(u8 **script)
 {
     struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
-    LoadSpritePalette(palette, FALSE);
+    LoadSpritePalette(palette, ShouldTintOverworld());
     UpdatePaletteGammaType(IndexOfSpritePaletteTag(palette->tag), GAMMA_NORMAL);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
     (*script) += 4;
@@ -791,7 +792,7 @@ void FieldEffectScript_LoadFadedPalette(u8 **script)
 void FieldEffectScript_LoadPalette(u8 **script)
 {
     struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
-    LoadSpritePalette(palette, FALSE);
+    LoadSpritePalette(palette, ShouldTintOverworld());
     (*script) += 4;
 }
 
@@ -2632,7 +2633,13 @@ static void FieldMoveShowMonOutdoorsEffect_LoadGfx(struct Task *task)
     u16 delta = ((REG_BG0CNT >> 8) << 11);
     CpuCopy16(sFieldMoveStreaksOutdoors_Gfx, (void *)(VRAM + offset), 0x200);
     CpuFill32(0, (void *)(VRAM + delta), 0x800);
-    LoadPalette(sFieldMoveStreaksOutdoors_Pal, 0xf0, sizeof(sFieldMoveStreaksOutdoors_Pal));
+    if(ShouldTintOverworld()){  
+         LoadPaletteDayNight(sFieldMoveStreaksOutdoors_Pal, 0xf0, sizeof(sFieldMoveStreaksOutdoors_Pal));
+    }else{
+        LoadPalette(sFieldMoveStreaksOutdoors_Pal, 0xf0, sizeof(sFieldMoveStreaksOutdoors_Pal));
+    }
+
+    
     LoadFieldMoveOutdoorStreaksTilemap(delta);
     task->tState++;
 }

@@ -2,6 +2,7 @@
 #include "sprite.h"
 #include "main.h"
 #include "palette.h"
+#include "time.h"
 
 #define MAX_SPRITE_COPY_REQUESTS 64
 
@@ -93,7 +94,6 @@ static void GetAffineAnimFrame(u8 matrixNum, struct Sprite *sprite, struct Affin
 static void ApplyAffineAnimFrame(u8 matrixNum, struct AffineAnimFrameCmd *frameCmd);
 static u8 IndexOfSpriteTileTag(u16 tag);
 static void AllocSpriteTileRange(u16 tag, u16 start, u16 count);
-static void DoLoadSpritePalette(const u16 *src, u16 paletteOffset);
 static void UpdateSpriteMatrixAnchorPos(struct Sprite *, s32, s32);
 
 typedef void (*AnimFunc)(struct Sprite *);
@@ -1600,7 +1600,12 @@ u8 LoadSpritePalette(const struct SpritePalette *palette, bool8 isDayNight)
     else
     {
         sSpritePaletteTags[index] = palette->tag;
-        DoLoadSpritePalette(palette->data, index * 16);
+        if(isDayNight && ShouldTintOverworld()){  
+            LoadPaletteDayNight(palette->data, (index * 16) + 0x100, 32);
+        }else{
+            LoadPalette(palette->data, (index * 16) + 0x100, 32);
+        }
+        
         return index;
     }
 }
@@ -1608,15 +1613,13 @@ u8 LoadSpritePalette(const struct SpritePalette *palette, bool8 isDayNight)
 void LoadSpritePalettes(const struct SpritePalette *palettes)
 {
     u8 i;
-    for (i = 0; palettes[i].data != NULL; i++)
-        if (LoadSpritePalette(&palettes[i], FALSE) == 0xFF)
+    for (i = 0; palettes[i].data != NULL; i++){
+        if (LoadSpritePalette(&palettes[i], ShouldTintOverworld()) == 0xFF){
             break;
+        }
+    }
 }
 
-void DoLoadSpritePalette(const u16 *src, u16 paletteOffset)
-{
-    LoadPalette(src, paletteOffset + 0x100, 32);
-}
 
 u8 AllocSpritePalette(u16 tag)
 {

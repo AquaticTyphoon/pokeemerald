@@ -30,6 +30,7 @@
 #include "constants/mauville_old_man.h"
 #include "constants/trainer_types.h"
 #include "constants/union_room.h"
+#include "time.h"
 
 // this file was known as evobjmv.c in Game Freak's original source
 
@@ -1961,18 +1962,7 @@ void FreeAndReserveObjectSpritePalettes(void)
 void LoadObjectEventPalette(u16 paletteTag)
 {
     u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
-
-    if (i != OBJ_EVENT_PAL_TAG_NONE) // always true
-        LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
-}
-
-// Unused
-static void LoadObjectEventPaletteSet(u16 *paletteTags)
-{
-    u8 i;
-
-    for (i = 0; paletteTags[i] != OBJ_EVENT_PAL_TAG_NONE; i++)
-        LoadObjectEventPalette(paletteTags[i]);
+    LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
 }
 
 static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *spritePalette)
@@ -1980,14 +1970,17 @@ static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *spritePalette
     if (IndexOfSpritePaletteTag(spritePalette->tag) != 0xFF)
         return 0xFF;
 
-    return LoadSpritePalette(spritePalette, FALSE);
+    return LoadSpritePalette(spritePalette, ShouldTintOverworld());
 }
 
 void PatchObjectPalette(u16 paletteTag, u8 paletteSlot)
 {
     u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
-
-    LoadPalette(sObjectEventSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
+    if(ShouldTintOverworld()){
+        LoadPaletteDayNight(sObjectEventSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
+    }else{
+        LoadPalette(sObjectEventSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
+    }
 }
 
 void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)
@@ -2015,15 +2008,6 @@ static u8 FindObjectEventPaletteIndexByTag(u16 tag)
 static void _PatchObjectPalette(u16 tag, u8 slot)
 {
     PatchObjectPalette(tag, slot);
-}
-
-// Unused
-static void IncrementObjectEventCoords(struct ObjectEvent *objectEvent, s16 x, s16 y)
-{
-    objectEvent->previousCoords.x = objectEvent->currentCoords.x;
-    objectEvent->previousCoords.y = objectEvent->currentCoords.y;
-    objectEvent->currentCoords.x += x;
-    objectEvent->currentCoords.y += y;
 }
 
 void ShiftObjectEventCoords(struct ObjectEvent *objectEvent, s16 x, s16 y)

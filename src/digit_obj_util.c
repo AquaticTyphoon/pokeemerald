@@ -4,6 +4,7 @@
 #include "decompress.h"
 #include "main.h"
 #include "battle_main.h"
+#include "time.h"
 
 struct DigitPrinter
 {
@@ -149,7 +150,7 @@ bool32 DigitObjUtil_CreatePrinter(u32 id, s32 num, const struct DigitObjUtilTemp
 
     sOamWork->array[id].palTagIndex = IndexOfSpritePaletteTag(template->spritePal->tag);
     if (sOamWork->array[id].palTagIndex == 0xFF)
-        sOamWork->array[id].palTagIndex = LoadSpritePalette(template->spritePal, FALSE);
+        sOamWork->array[id].palTagIndex = LoadSpritePalette(template->spritePal, ShouldTintOverworld());
 
     sOamWork->array[id].strConvMode = template->strConvMode;
     sOamWork->array[id].oamCount = template->oamCount;

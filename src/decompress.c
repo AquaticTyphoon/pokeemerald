@@ -4,6 +4,7 @@
 #include "decompress.h"
 #include "pokemon.h"
 #include "text.h"
+#include "time.h"
 
 EWRAM_DATA ALIGNED(4) u8 gDecompressionBuffer[0x4000] = {0};
 

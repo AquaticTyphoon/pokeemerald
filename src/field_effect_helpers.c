@@ -14,6 +14,7 @@
 #include "constants/field_effects.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "time.h"
 
 #define OBJ_EVENT_PAL_TAG_NONE 0x11FF // duplicate of define in event_object_movement.c
 
@@ -123,7 +124,7 @@ void LoadSpecialReflectionPalette(struct Sprite *sprite)
 	}
 	reflectionPalette.data = gReflectionPaletteBuffer;
 	reflectionPalette.tag = GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) + 0x1000;
-	LoadSpritePalette(&reflectionPalette, FALSE);
+	LoadSpritePalette(&reflectionPalette, ShouldTintOverworld());
 	sprite->oam.paletteNum = IndexOfSpritePaletteTag(reflectionPalette.tag);
 	UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
 	UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
