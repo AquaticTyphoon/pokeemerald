@@ -11,7 +11,6 @@
 #include "palette.h"
 #include "pokenav.h"
 #include "script.h"
-#include "secret_base.h"
 #include "trainer_hill.h"
 #include "tv.h"
 #include "constants/rgb.h"
@@ -72,15 +71,12 @@ struct MapHeader const *const GetMapHeaderFromConnection(struct MapConnection *c
 void InitMap(void)
 {
     InitMapLayoutData(&gMapHeader);
-    SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
     RunOnLoadMapScript();
 }
 
 void InitMapFromSavedGame(void)
 {
     InitMapLayoutData(&gMapHeader);
-    InitSecretBaseAppearance(FALSE);
-    SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
     LoadSavedMapView();
     RunOnLoadMapScript();
     UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
@@ -834,8 +830,6 @@ static bool8 SkipCopyingMetatileFromSavedMap(u16 *mapBlock, u16 mapWidth, u8 yMo
     else
         mapBlock += mapWidth;
 
-    if (IsLargeBreakableDecoration(*mapBlock & MAPGRID_METATILE_ID_MASK, yMode) == TRUE)
-        return TRUE;
     return FALSE;
 }
 

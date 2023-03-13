@@ -22,7 +22,6 @@
 #include "pokemon.h"
 #include "safari_zone.h"
 #include "script.h"
-#include "secret_base.h"
 #include "sound.h"
 #include "start_menu.h"
 #include "trainer_see.h"
@@ -226,10 +225,6 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
     // Don't play interaction sound for certain scripts.
     if (script != LittlerootTown_BrendansHouse_2F_EventScript_PC
      && script != LittlerootTown_MaysHouse_2F_EventScript_PC
-     && script != SecretBase_EventScript_PC
-     && script != SecretBase_EventScript_RecordMixingPC
-     && script != SecretBase_EventScript_DollInteract
-     && script != SecretBase_EventScript_CushionInteract
      && script != EventScript_PC)
         PlaySE(SE_SELECT);
 
@@ -351,14 +346,6 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
         if (FlagGet(gSpecialVar_0x8004) == TRUE)
             return NULL;
         return EventScript_HiddenItemScript;
-    case BG_EVENT_SECRET_BASE:
-        if (direction == DIR_NORTH)
-        {
-            gSpecialVar_0x8004 = bgEvent->bgUnion.secretBaseId;
-            if (TrySetCurSecretBase())
-                return SecretBase_EventScript_CheckEntrance;
-        }
-        return NULL;
     }
 
     return bgEvent->bgUnion.script;
@@ -410,38 +397,7 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_TrainerHillTimer;
 
     elevation = position->elevation;
-    if (elevation == MapGridGetElevationAt(position->x, position->y))
-    {
-        if (MetatileBehavior_IsSecretBasePC(metatileBehavior) == TRUE)
-            return SecretBase_EventScript_PC;
-        if (MetatileBehavior_IsRecordMixingSecretBasePC(metatileBehavior) == TRUE)
-            return SecretBase_EventScript_RecordMixingPC;
-        if (MetatileBehavior_IsSecretBaseSandOrnament(metatileBehavior) == TRUE)
-            return SecretBase_EventScript_SandOrnament;
-        if (MetatileBehavior_IsSecretBaseShieldOrToyTV(metatileBehavior) == TRUE)
-            return SecretBase_EventScript_ShieldOrToyTV;
-        if (MetatileBehavior_IsSecretBaseDecorationBase(metatileBehavior) == TRUE)
-        {
-            CheckInteractedWithFriendsFurnitureBottom();
-            return NULL;
-        }
-        if (MetatileBehavior_HoldsLargeDecoration(metatileBehavior) == TRUE)
-        {
-            CheckInteractedWithFriendsFurnitureMiddle();
-            return NULL;
-        }
-        if (MetatileBehavior_HoldsSmallDecoration(metatileBehavior) == TRUE)
-        {
-            CheckInteractedWithFriendsFurnitureTop();
-            return NULL;
-        }
-    }
-    else if (MetatileBehavior_IsSecretBasePoster(metatileBehavior) == TRUE)
-    {
-        CheckInteractedWithFriendsPosterDecor();
-        return NULL;
-    }
-
+    
     return NULL;
 }
 
@@ -518,17 +474,6 @@ static bool8 TryStartMiscWalkingScripts(u16 metatileBehavior)
     {
         ScriptContext_SetupScript(BattlePyramid_WarpToNextFloor);
         return TRUE;
-    }
-    else if (MetatileBehavior_IsSecretBaseGlitterMat(metatileBehavior) == TRUE)
-    {
-        DoSecretBaseGlitterMatSparkle();
-        return FALSE;
-    }
-    else if (MetatileBehavior_IsSecretBaseSoundMat(metatileBehavior) == TRUE)
-    {
-        PlayerGetDestCoords(&x, &y);
-        PlaySecretBaseMusicNoteMatSound(MapGridGetMetatileIdAt(x, y));
-        return FALSE;
     }
     return FALSE;
 }
@@ -639,8 +584,7 @@ static bool8 UpdatePoisonStepCounter(void)
 {
     u16 *ptr;
 
-    if (gMapHeader.mapType != MAP_TYPE_SECRET_BASE)
-    {
+
         ptr = GetVarPointer(VAR_POISON_STEP_COUNTER);
         (*ptr)++;
         (*ptr) %= 4;
@@ -656,7 +600,7 @@ static bool8 UpdatePoisonStepCounter(void)
                 return TRUE;
             }
         }
-    }
+    
     return FALSE;
 }
 
@@ -837,12 +781,6 @@ static bool8 TryDoorWarp(struct MapPosition *position, u16 metatileBehavior, u8 
 
     if (direction == DIR_NORTH)
     {
-        if (MetatileBehavior_IsOpenSecretBaseDoor(metatileBehavior) == TRUE)
-        {
-            WarpIntoSecretBase(position, gMapHeader.events);
-            return TRUE;
-        }
-
         if (MetatileBehavior_IsWarpDoor(metatileBehavior) == TRUE)
         {
             warpEventId = GetWarpEventAtMapPosition(&gMapHeader, position);

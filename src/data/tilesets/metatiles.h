@@ -94,9 +94,6 @@ const u16 gMetatileAttributes_BikeShop[] = INCBIN_U16("data/tilesets/secondary/b
 const u16 gMetatiles_RusturfTunnel[] = INCBIN_U16("data/tilesets/secondary/rusturf_tunnel/metatiles.bin");
 const u16 gMetatileAttributes_RusturfTunnel[] = INCBIN_U16("data/tilesets/secondary/rusturf_tunnel/metatile_attributes.bin");
 
-const u16 gMetatiles_SecretBaseSecondary[] = INCBIN_U16("data/tilesets/secondary/secret_base/metatiles.bin");
-const u16 gMetatileAttributes_SecretBaseSecondary[] = INCBIN_U16("data/tilesets/secondary/secret_base/metatile_attributes.bin");
-
 const u16 gMetatiles_InsideOfTruck[] = INCBIN_U16("data/tilesets/secondary/inside_of_truck/metatiles.bin");
 const u16 gMetatileAttributes_InsideOfTruck[] = INCBIN_U16("data/tilesets/secondary/inside_of_truck/metatile_attributes.bin");
 
@@ -153,9 +150,6 @@ const u16 gMetatileAttributes_TrickHousePuzzle[] = INCBIN_U16("data/tilesets/sec
 
 const u16 gMetatiles_InsideShip[] = INCBIN_U16("data/tilesets/secondary/inside_ship/metatiles.bin");
 const u16 gMetatileAttributes_InsideShip[] = INCBIN_U16("data/tilesets/secondary/inside_ship/metatile_attributes.bin");
-
-const u16 gMetatiles_SecretBasePrimary[] = INCBIN_U16("data/tilesets/primary/secret_base/metatiles.bin");
-const u16 gMetatileAttributes_SecretBasePrimary[] = INCBIN_U16("data/tilesets/primary/secret_base/metatile_attributes.bin");
 
 const u16 gMetatiles_EliteFour[] = INCBIN_U16("data/tilesets/secondary/elite_four/metatiles.bin");
 const u16 gMetatileAttributes_EliteFour[] = INCBIN_U16("data/tilesets/secondary/elite_four/metatile_attributes.bin");

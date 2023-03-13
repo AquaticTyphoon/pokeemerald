@@ -305,14 +305,8 @@ string generate_map_events_text(Json map_data) {
                 }
                 text << "\n";
             }
-            else if (type == "secret_base") {
-                text << "\tbg_secret_base_event "
-                     << json_to_string(bg_event, "x") << ", "
-                     << json_to_string(bg_event, "y") << ", "
-                     << json_to_string(bg_event, "elevation") << ", "
-                     << json_to_string(bg_event, "secret_base_id") << "\n";
-            } else {
-                FATAL_ERROR("Unknown bg event type '%s'. Expected 'sign', 'hidden_item', or 'secret_base'.\n", type.c_str());
+            else {
+                FATAL_ERROR("Unknown bg event type '%s'. Expected 'sign', 'hidden_item'.\n", type.c_str());
             }
         }
         text << "\n";

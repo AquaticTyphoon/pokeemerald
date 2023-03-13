@@ -352,72 +352,6 @@ const struct Tileset gTileset_RusturfTunnel =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_SecretBaseBrownCave =
-{
-    .isCompressed = FALSE,
-    .isSecondary = TRUE,
-    .tiles = gTilesetTiles_SecretBaseBrownCave,
-    .palettes = gTilesetPalettes_SecretBaseBrownCave,
-    .metatiles = gMetatiles_SecretBaseSecondary,
-    .metatileAttributes = gMetatileAttributes_SecretBaseSecondary,
-    .callback = NULL,
-};
-
-const struct Tileset gTileset_SecretBaseTree =
-{
-    .isCompressed = FALSE,
-    .isSecondary = TRUE,
-    .tiles = gTilesetTiles_SecretBaseTree,
-    .palettes = gTilesetPalettes_SecretBaseTree,
-    .metatiles = gMetatiles_SecretBaseSecondary,
-    .metatileAttributes = gMetatileAttributes_SecretBaseSecondary,
-    .callback = NULL,
-};
-
-const struct Tileset gTileset_SecretBaseShrub =
-{
-    .isCompressed = FALSE,
-    .isSecondary = TRUE,
-    .tiles = gTilesetTiles_SecretBaseShrub,
-    .palettes = gTilesetPalettes_SecretBaseShrub,
-    .metatiles = gMetatiles_SecretBaseSecondary,
-    .metatileAttributes = gMetatileAttributes_SecretBaseSecondary,
-    .callback = NULL,
-};
-
-const struct Tileset gTileset_SecretBaseBlueCave =
-{
-    .isCompressed = FALSE,
-    .isSecondary = TRUE,
-    .tiles = gTilesetTiles_SecretBaseBlueCave,
-    .palettes = gTilesetPalettes_SecretBaseBlueCave,
-    .metatiles = gMetatiles_SecretBaseSecondary,
-    .metatileAttributes = gMetatileAttributes_SecretBaseSecondary,
-    .callback = NULL,
-};
-
-const struct Tileset gTileset_SecretBaseYellowCave =
-{
-    .isCompressed = FALSE,
-    .isSecondary = TRUE,
-    .tiles = gTilesetTiles_SecretBaseYellowCave,
-    .palettes = gTilesetPalettes_SecretBaseYellowCave,
-    .metatiles = gMetatiles_SecretBaseSecondary,
-    .metatileAttributes = gMetatileAttributes_SecretBaseSecondary,
-    .callback = NULL,
-};
-
-const struct Tileset gTileset_SecretBaseRedCave =
-{
-    .isCompressed = FALSE,
-    .isSecondary = TRUE,
-    .tiles = gTilesetTiles_SecretBaseRedCave,
-    .palettes = gTilesetPalettes_SecretBaseRedCave,
-    .metatiles = gMetatiles_SecretBaseSecondary,
-    .metatileAttributes = gMetatileAttributes_SecretBaseSecondary,
-    .callback = NULL,
-};
-
 const struct Tileset gTileset_InsideOfTruck =
 {
     .isCompressed = TRUE,
@@ -626,20 +560,6 @@ const struct Tileset gTileset_InsideShip =
     .metatileAttributes = gMetatileAttributes_InsideShip,
     .callback = NULL,
 };
-
-const struct Tileset gTileset_SecretBase =
-{
-    .isCompressed = FALSE,
-    .isSecondary = FALSE,
-    .tiles = gTilesetTiles_SecretBase,
-    .palettes = gTilesetPalettes_SecretBase,
-    .metatiles = gMetatiles_SecretBasePrimary,
-    .metatileAttributes = gMetatileAttributes_SecretBasePrimary,
-    .callback = NULL,
-};
-
-const struct Tileset * const gTilesetPointer_SecretBase = &gTileset_SecretBase;
-const struct Tileset * const gTilesetPointer_SecretBaseRedCave = &gTileset_SecretBaseRedCave;
 
 const struct Tileset gTileset_EliteFour =
 {

@@ -68,7 +68,6 @@ static const u8 * const sGiddyQuestions[GIDDY_MAX_QUESTIONS] = {
     GiddyText_WhatsTheBottomOfTheSeaLike,
     GiddyText_WhenYouSeeTheSettingSunDoesIt,
     GiddyText_LyingBackInTheGreenGrass,
-    GiddyText_SecretBasesAreSoWonderful
 };
 
 static void SetupBard(void)

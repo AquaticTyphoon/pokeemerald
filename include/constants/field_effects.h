@@ -48,8 +48,8 @@
 #define FLDEFF_USE_DIVE                  44
 #define FLDEFF_POKEBALL_TRAIL            45
 #define FLDEFF_HEART_ICON                46
-#define FLDEFF_NOP_47                    47
-#define FLDEFF_NOP_48                    48
+#define FLDEFF_UNUSED_NOP                47
+#define FLDEFF_NOP                    48
 #define FLDEFF_ASH_PUFF                  49
 #define FLDEFF_ASH_LAUNCH                50
 #define FLDEFF_SWEET_SCENT               51

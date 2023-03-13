@@ -38,7 +38,6 @@
 #include "pokemon_storage_system.h"
 #include "pokemon_jump.h"
 #include "decoration_inventory.h"
-#include "secret_base.h"
 #include "player_pc.h"
 #include "field_specials.h"
 #include "berry_powder.h"
@@ -167,7 +166,6 @@ void NewGameInitData(void)
     InitEventData();
     ClearTVShowData();
     ResetGabbyAndTy();
-    ClearSecretBases();
     ClearBerryTrees();
     SetMoney(&gSaveBlock1Ptr->money, 3000);
     SetCoins(0);
