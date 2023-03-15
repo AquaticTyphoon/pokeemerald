@@ -11,19 +11,43 @@ script DebugSignTest {
 }
 
 script Demo_Start {
-
     lockall
     playfanfare(MUS_OBTAIN_ITEM)
-    msgbox("{PLAYER} Recieved Mudkip")
-    givemon(SPECIES_MUDKIP,5, ITEM_ORAN_BERRY)  
-    call(NicknamePartyMon)
     setvar(VAR_DEMO_STATE, 1)
     setflag(FLAG_SYS_POKEDEX_GET)
     setflag(FLAG_SYS_POKEMON_GET)
+    setflag(FLAG_SYS_B_DASH)
+    random(3)
+    switch (var(VAR_RESULT)) {
+        case 0: call(StarterOne)
+        case 1: call(StarterTwo)
+        case 2: call(StarterThree)
+    }
+}
+
+script StarterOne { 
+    showmonpic(SPECIES_TREECKO, 10,3)
+    msgbox("{PLAYER} recieved a Treeko!")
+    givemon(SPECIES_TREECKO,5, ITEM_ORAN_BERRY)  
+    call(NicknamePartyMon)
+}
+
+script StarterTwo { 
+    showmonpic(SPECIES_TORCHIC, 10,3)
+    msgbox("{PLAYER} recieved a Torchic!")
+    givemon(SPECIES_TORCHIC,5, ITEM_ORAN_BERRY)  
+    call(NicknamePartyMon)
+}
+
+script StarterThree { 
+    showmonpic(SPECIES_MUDKIP, 10,3)
+    msgbox("{PLAYER} recieved a Mudkip!")
+    givemon(SPECIES_MUDKIP,5, ITEM_ORAN_BERRY)  
+    call(NicknamePartyMon)
 }
 
 script NicknamePartyMon{
-    msgbox("Give your starter a name?", MSGBOX_YESNO)
+    msgbox("Do you want to nickname your starter?", MSGBOX_YESNO)
     hidemonpic
     if(var(VAR_RESULT) == YES){
         call(Common_EventScript_GetGiftMonPartySlot)
