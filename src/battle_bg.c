@@ -602,11 +602,11 @@ static const struct BattleBackground sBattleTerrainTable[] =
 {
     [BATTLE_TERRAIN_GRASS] =
     {
-        .tileset = gBattleTerrainTiles_TallGrass,
-        .tilemap = gBattleTerrainTilemap_TallGrass,
-        .entryTileset = gBattleTerrainAnimTiles_TallGrass,
-        .entryTilemap = gBattleTerrainAnimTilemap_TallGrass,
-        .palette = gBattleTerrainPalette_TallGrass,
+        .tileset = gBattleTerrainTiles_Grass,
+        .tilemap = gBattleTerrainTilemap_Grass,
+        .entryTileset = gBattleTerrainAnimTiles_Grass,
+        .entryTilemap = gBattleTerrainAnimTilemap_Grass,
+        .palette = gBattleTerrainPalette_Grass,
     },
 
     [BATTLE_TERRAIN_LONG_GRASS] =
