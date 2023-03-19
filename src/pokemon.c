@@ -6781,7 +6781,6 @@ static bool8 ShouldSkipFriendshipChange(void)
 // sprites (unless gMonSpritesGfxPtr is in use), but were set up for more general use.
 // Only the 'default' mode (MON_SPR_GFX_MODE_NORMAL) is used, which is set
 // up to allocate 4 sprites using the battler sprite templates (gBattlerSpriteTemplates).
-// MON_SPR_GFX_MODE_BATTLE is identical but never used.
 // MON_SPR_GFX_MODE_FULL_PARTY is set up to allocate 7 sprites (party + trainer?)
 // using a generic 64x64 template, and is also never used.
 
@@ -6842,7 +6841,6 @@ struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 managerId, u8 mode)
         gfx->dataSize = 1;
         gfx->mode = MON_SPR_GFX_MODE_FULL_PARTY;
         break;
- // case MON_SPR_GFX_MODE_BATTLE:
     case MON_SPR_GFX_MODE_NORMAL:
     default:
         gfx->numSprites = MAX_BATTLERS_COUNT;
@@ -6884,7 +6882,6 @@ struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 managerId, u8 mode)
             InitMonSpritesGfx_FullParty(gfx);
             break;
         case MON_SPR_GFX_MODE_NORMAL:
-        case MON_SPR_GFX_MODE_BATTLE:
         default:
             InitMonSpritesGfx_Battle(gfx);
             break;

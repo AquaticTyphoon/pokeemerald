@@ -241,7 +241,6 @@ struct MonSpritesGfxManager
 
 enum {
     MON_SPR_GFX_MODE_NORMAL,
-    MON_SPR_GFX_MODE_BATTLE,
     MON_SPR_GFX_MODE_FULL_PARTY,
 };
 
