@@ -4203,8 +4203,6 @@ extern const u32 gBattleAnimSpriteGfx_HumanoidFoot[];
 extern const u32 gBattleAnimSpriteGfx_MonsterFoot[];
 extern const u32 gBattleAnimSpriteGfx_HumanoidHand[];
 extern const u32 gBattleAnimSpriteGfx_NoiseLine[];
-extern const u32 UnusedLevelupAnimationGfx[];
-extern const u32 UnusedLevelupAnimationTilemap[];
 extern const u32 gBattleAnimSpriteGfx_YellowUnk[];
 extern const u32 gBattleAnimSpriteGfx_RedFist[];
 extern const u32 gBattleAnimSpriteGfx_SlamHit[];
@@ -4915,9 +4913,9 @@ extern const u16 gTradeMenuMonBox_Tilemap[];
 extern const u8 gTradeCursor_Gfx[];
 extern const u16 gTradeCursor_Pal[];
 
-// Party menu
+
 extern const u32 gPartyMenuPokeball_Gfx[];
-extern const u32 gPartyMenuPokeballSmall_Gfx[];
+
 extern const u32 gStatusPal_Icons[];
 extern const u32 gPartyMenuPokeball_Pal[];
 extern const u32 gStatusPal_Icons[];
