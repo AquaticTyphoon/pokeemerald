@@ -2698,7 +2698,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSTidal = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SubmarineShadow = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW,
+    .paletteTag = OBJ_EVENT_PAL_TAG_SHADOW,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 1408,
     .width = 88,

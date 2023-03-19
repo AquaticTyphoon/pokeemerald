@@ -11493,7 +11493,7 @@
           }
         },
         {
-          "map": "MAP_LITTLEROOT_TOWN",
+          "map": "MAP_SCARLET_BAY",
           "base_label": "gDemo",
           "land_mons": {
             "encounter_rate": 20,

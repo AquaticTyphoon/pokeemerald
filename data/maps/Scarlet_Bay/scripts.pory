@@ -1,4 +1,4 @@
-mapscripts LittlerootTown_MapScripts {
+mapscripts Scarlet_Bay_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DEMO_STATE, 0: Demo_Start
     ]

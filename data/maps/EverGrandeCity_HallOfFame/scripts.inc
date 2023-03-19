@@ -51,7 +51,7 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame::
 	end
 
 EverGrandeCity_HallOfFame_EventScript_GameClearMale::
-	setrespawn HEAL_LOCATION_DEMO_START_2F
+	setrespawn HEAL_LOCATION_SCARLET_BAY_2F
 	fadescreenspeed FADE_TO_BLACK, 24
 	special GameClear
 	waitstate
@@ -59,7 +59,7 @@ EverGrandeCity_HallOfFame_EventScript_GameClearMale::
 	end
 
 EverGrandeCity_HallOfFame_EventScript_GameClearFemale::
-	setrespawn HEAL_LOCATION_DEMO_START_2F
+	setrespawn HEAL_LOCATION_SCARLET_BAY_2F
 	fadescreenspeed FADE_TO_BLACK, 24
 	special GameClear
 	waitstate

@@ -35,7 +35,7 @@ int GameClear(void)
 
     SetContinueGameWarpStatus();
 
-    SetContinueGameWarpToHealLocation(HEAL_LOCATION_DEMO_START);
+    SetContinueGameWarpToHealLocation(HEAL_LOCATION_SCARLET_BAY);
 
     ribbonGet = FALSE;
 
