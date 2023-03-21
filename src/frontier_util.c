@@ -18,11 +18,9 @@
 #include "new_game.h"
 #include "link.h"
 #include "tv.h"
-#include "apprentice.h"
 #include "pokedex.h"
 #include "recorded_battle.h"
 #include "data.h"
-#include "record_mixing.h"
 #include "strings.h"
 #include "malloc.h"
 #include "save.h"
@@ -37,6 +35,7 @@
 #include "constants/items.h"
 #include "constants/event_objects.h"
 #include "party_menu.h"
+
 
 struct FrontierBrainMon
 {
@@ -1701,12 +1700,8 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
             FrontierSpeechToString(gSaveBlock2Ptr->frontier.ereaderTrainer.greeting);
         else if (trainerId == TRAINER_FRONTIER_BRAIN)
             CopyFrontierBrainText(FALSE);
-        else if (trainerId < FRONTIER_TRAINERS_COUNT)
-            FrontierSpeechToString(gFacilityTrainers[trainerId].speechBefore);
-        else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
-            FrontierSpeechToString(gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].greeting);
         else
-            BufferApprenticeChallengeText(trainerId - TRAINER_RECORD_MIXING_APPRENTICE);
+            FrontierSpeechToString(gFacilityTrainers[trainerId].speechBefore);
         break;
     case FRONTIER_PLAYER_LOST_TEXT:
         if (trainerId == TRAINER_EREADER)
@@ -1721,19 +1716,9 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
         {
             FrontierSpeechToString(gFacilityTrainers[trainerId].speechWin);
         }
-        else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
-        {
-            if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
-                FrontierSpeechToString(GetRecordedBattleEasyChatSpeech());
-            else
-                FrontierSpeechToString(gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].speechWon);
-        }
         else
         {
-            if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
-                FrontierSpeechToString(GetRecordedBattleEasyChatSpeech());
-            else
-                FrontierSpeechToString(gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].speechWon);
+            FrontierSpeechToString(GetRecordedBattleEasyChatSpeech());
         }
         break;
     case FRONTIER_PLAYER_WON_TEXT:
@@ -1749,25 +1734,9 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
         {
             FrontierSpeechToString(gFacilityTrainers[trainerId].speechLose);
         }
-        else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
-        {
-            if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
-                FrontierSpeechToString(GetRecordedBattleEasyChatSpeech());
-            else
-                FrontierSpeechToString(gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].speechLost);
-        }
         else
         {
-            if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
-            {
-                trainerId = GetRecordedBattleApprenticeId();
-                FrontierSpeechToString(gApprentices[trainerId].speechLost);
-            }
-            else
-            {
-                trainerId = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].id;
-                FrontierSpeechToString(gApprentices[trainerId].speechLost);
-            }
+            FrontierSpeechToString(GetRecordedBattleEasyChatSpeech());
         }
         break;
     }
@@ -2266,6 +2235,46 @@ static void Print2PRecord(s32 position, s32 x, s32 y, struct RankingHall2P *hall
         AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, gStringVar4, GetStringRightAlignXOffset(FONT_NORMAL, sHallFacilityToRecordsText[RANKING_HALL_TOWER_LINK], 0xC8), (8 * (y + 5 * position)) + 1, TEXT_SKIP_DRAW, NULL);
     }
 }
+
+void GetPlayerHallRecords(struct PlayerHallRecords *dst)
+{
+    s32 i, j;
+
+    for (i = 0; i < HALL_FACILITIES_COUNT; i++)
+    {
+        for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+        {
+            CopyTrainerId(dst->onePlayer[i][j].id, gSaveBlock2Ptr->playerTrainerId);
+            dst->onePlayer[i][j].language = GAME_LANGUAGE;
+            StringCopy(dst->onePlayer[i][j].name, gSaveBlock2Ptr->playerName);
+        }
+    }
+
+    for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+    {
+        dst->twoPlayers[j].language = GAME_LANGUAGE;
+        CopyTrainerId(dst->twoPlayers[j].id1, gSaveBlock2Ptr->playerTrainerId);
+        CopyTrainerId(dst->twoPlayers[j].id2, gSaveBlock2Ptr->frontier.opponentTrainerIds[j]);
+        StringCopy(dst->twoPlayers[j].name1, gSaveBlock2Ptr->playerName);
+        StringCopy(dst->twoPlayers[j].name2, gSaveBlock2Ptr->frontier.opponentNames[j]);
+    }
+
+    for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
+    {
+        dst->onePlayer[RANKING_HALL_TOWER_SINGLES][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+        dst->onePlayer[RANKING_HALL_TOWER_DOUBLES][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_DOUBLES][i];
+        dst->onePlayer[RANKING_HALL_TOWER_MULTIS][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_MULTIS][i];
+        dst->onePlayer[RANKING_HALL_DOME][i].winStreak = gSaveBlock2Ptr->frontier.domeRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+        dst->onePlayer[RANKING_HALL_PALACE][i].winStreak = gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+        dst->onePlayer[RANKING_HALL_ARENA][i].winStreak = gSaveBlock2Ptr->frontier.arenaRecordStreaks[i];
+        dst->onePlayer[RANKING_HALL_FACTORY][i].winStreak = gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+        dst->onePlayer[RANKING_HALL_PIKE][i].winStreak = gSaveBlock2Ptr->frontier.pikeRecordStreaks[i];
+        dst->onePlayer[RANKING_HALL_PYRAMID][i].winStreak = gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i];
+
+        dst->twoPlayers[i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_LINK_MULTIS][i];
+    }
+}
+
 
 static void Fill1PRecords(struct RankingHall1P *dst, s32 hallFacilityId, s32 lvlMode)
 {

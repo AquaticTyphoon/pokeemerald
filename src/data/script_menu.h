@@ -859,11 +859,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SHARDS_RYBG]                = MULTICHOICE(MultichoiceList_ShardsRYBG),
     [MULTI_TOURNEY_WITH_RECORD]        = MULTICHOICE(MultichoiceList_TourneyWithRecord),
     [MULTI_CABLE_CLUB_NO_RECORD_MIX]   = MULTICHOICE(MultichoiceList_LinkServicesNoRecordBerry),
-    [MULTI_WIRELESS_NO_RECORD_BERRY]   = MULTICHOICE(MultichoiceList_LinkServicesNoRecordBerry),
-    [MULTI_CABLE_CLUB_WITH_RECORD_MIX] = MULTICHOICE(MultichoiceList_LinkServicesNoBerry),
+    [MULTI_WIRELESS_BERRY]   = MULTICHOICE(MultichoiceList_LinkServicesNoRecordBerry),
     [MULTI_WIRELESS_NO_BERRY]          = MULTICHOICE(MultichoiceList_LinkServicesNoBerry),
-    [MULTI_WIRELESS_NO_RECORD]         = MULTICHOICE(MultichoiceList_LinkServicesNoRecord),
-    [MULTI_WIRELESS_ALL_SERVICES]      = MULTICHOICE(MultichoiceList_LinkServicesAll),
+    [MULTI_WIRELESS]         = MULTICHOICE(MultichoiceList_LinkServicesNoRecord),
     [MULTI_WIRELESS_MINIGAME]          = MULTICHOICE(MultichoiceList_WirelessMinigame),
     [MULTI_LINK_LEADER]                = MULTICHOICE(MultichoiceList_LinkLeader),
     [MULTI_CONTEST_RANK]               = MULTICHOICE(MultichoiceList_ContestRank),
@@ -937,11 +935,9 @@ const u8 *const gStdStrings[] =
 static const u8 sLinkServicesMultichoiceIds[] =
 {
     MULTI_CABLE_CLUB_NO_RECORD_MIX,
-    MULTI_WIRELESS_NO_RECORD_BERRY,
-    MULTI_CABLE_CLUB_WITH_RECORD_MIX,
+    MULTI_WIRELESS_BERRY,
     MULTI_WIRELESS_NO_BERRY,
-    MULTI_WIRELESS_NO_RECORD,
-    MULTI_WIRELESS_ALL_SERVICES
+    MULTI_WIRELESS,
 };
 
 static const u8 *const sPCNameStrings[] =

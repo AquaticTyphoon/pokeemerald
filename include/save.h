@@ -44,7 +44,6 @@ enum
 {
     ENABLE,
     DISABLE,
-    CHECK // unused
 };
 
 // Do save types
@@ -55,7 +54,6 @@ enum
     SAVE_EREADER, // deprecated in Emerald
     SAVE_HALL_OF_FAME,
     SAVE_OVERWRITE_DIFFERENT_FILE,
-    SAVE_HALL_OF_FAME_ERASE_BEFORE // unused
 };
 
 // A save sector location holds a pointer to the data for a particular sector
@@ -69,7 +67,6 @@ struct SaveSectorLocation
 struct SaveSector
 {
     u8 data[SECTOR_DATA_SIZE];
-    u8 unused[SECTOR_FOOTER_SIZE - 12]; // Unused portion of the footer
     u16 id;
     u16 checksum;
     u32 signature;

@@ -25,6 +25,13 @@ u8 GetFrontierBrainMonNature(u8 monId);
 u8 GetFrontierBrainMonEvs(u8 monId, u8 evStatId);
 s32 GetFronterBrainSymbol(void);
 
+struct PlayerHallRecords
+{
+    struct RankingHall1P onePlayer[HALL_FACILITIES_COUNT][FRONTIER_LVL_MODE_COUNT];
+    struct RankingHall2P twoPlayers[FRONTIER_LVL_MODE_COUNT];
+};
+void GetPlayerHallRecords(struct PlayerHallRecords *dst);
+
 extern const u16 gFrontierBannedSpecies[];
 
 #endif // GUARD_FRONTIER_UTIL_H

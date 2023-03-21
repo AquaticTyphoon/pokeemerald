@@ -31,7 +31,6 @@
 	.include "src/pokemon_storage_system.o"
 	.include "src/fldeff_cut.o"
 	.include "src/script_menu.o"
-	.include "src/record_mixing.o"
 	.include "src/tv.o"
 	.include "src/mauville_old_man.o"
 	.include "src/menu_helpers.o"

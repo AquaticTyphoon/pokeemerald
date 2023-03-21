@@ -127,10 +127,6 @@ static bool32 SetDamagedSectorBits(u8 op, u8 sectorId)
     case DISABLE:
         gDamagedSaveSectors &= ~(1 << sectorId);
         break;
-    case CHECK: // unused
-        if (gDamagedSaveSectors & (1 << sectorId))
-            retVal = TRUE;
-        break;
     }
 
     return retVal;
@@ -715,12 +711,6 @@ u8 HandleSavingData(u8 saveType)
     UpdateSaveAddresses();
     switch (saveType)
     {
-    case SAVE_HALL_OF_FAME_ERASE_BEFORE:
-        // Unused. Erases the special save sectors (HOF, Trainer Hill, Recorded Battle)
-        // before overwriting HOF.
-        for (i = SECTOR_ID_HOF_1; i < SECTORS_COUNT; i++)
-            EraseFlashSector(i);
-        // fallthrough
     case SAVE_HALL_OF_FAME:
         if (GetGameStat(GAME_STAT_ENTERED_HOF) < 999)
             IncrementGameStat(GAME_STAT_ENTERED_HOF);

@@ -16,10 +16,8 @@ gSpecials::
 	def_special ExitLinkRoom
 	def_special SetDecoration
 	def_special PutAwayDecorationIteration
-	def_special RecordMixingPlayerSpotTriggered
 	def_special TryBattleLinkup
 	def_special TryTradeLinkup
-	def_special TryRecordMixLinkup
 	def_special ValidateMixingGameLanguage
 	def_special CloseLink
 	def_special ColosseumPlayerSpotTriggered
@@ -104,16 +102,13 @@ gSpecials::
 	def_special StorytellerStoryListMenu
 	def_special StorytellerUpdateStat
 	def_special Script_StorytellerInitializeRandomStat
-	def_special HasStorytellerAlreadyRecorded
 	def_special TraderMenuGetDecoration
 	def_special GetTraderTradedFlag
 	def_special DoesPlayerHaveNoDecorations
 	def_special IsDecorationCategoryFull
 	def_special TraderShowDecorationMenu
 	def_special TraderDoDecorationTrade
-	def_special GetSeedotSizeRecordInfo
 	def_special CompareSeedotSize
-	def_special GetLotadSizeRecordInfo
 	def_special CompareLotadSize
 	def_special TryPutNameRaterShowOnTheAir
 	def_special BufferMonNickname
@@ -188,7 +183,6 @@ gSpecials::
 	def_special ScriptHatchMon
 	def_special EggHatch
 	def_special CheckDaycareMonReceivedMail
-	def_special ShowLinkBattleRecords
 	def_special IsEnoughForCostInVar0x8005
 	def_special SubtractMoneyFromVar0x8005
 	def_special TryFieldPoisonWhiteOut
@@ -217,7 +211,6 @@ gSpecials::
 	def_special BufferMoveDeleterNicknameAndMove
 	def_special GetNumMovesSelectedMonHas
 	def_special TeachMoveRelearnerMove
-	def_special GetRecordedCyclingRoadResults
 	def_special Special_BeginCyclingRoadChallenge
 	def_special GetPlayerAvatarBike
 	def_special FinishCyclingRoadChallenge
@@ -251,7 +244,6 @@ gSpecials::
 	def_special GetWeekCount
 	def_special RetrieveLotteryNumber
 	def_special PickLotteryCornerTicket
-	def_special ShowBerryBlenderRecordWindow
 	def_special ResetTrickHouseNuggetFlag
 	def_special SetTrickHouseNuggetFlag
 	def_special ScriptMenu_CreatePCMultichoice
@@ -367,7 +359,6 @@ gSpecials::
 	def_special QuizLadySetCustomQuestion
 	def_special QuizLadyTakePrizeForCustomQuiz
 	def_special GetMysteryGiftCardStat
-	def_special QuizLadyRecordCustomQuizData
 	def_special QuizLadySetWaitingForChallenger
 	def_special BufferQuizCorrectAnswer
 	def_special BufferQuizPrizeName
@@ -381,7 +372,6 @@ gSpecials::
 	def_special GetContestLadyCategory
 	def_special PutLilycoveContestLadyShowOnTheAir
 	def_special CloseBattlePikeCurtain
-	def_special CallApprenticeFunction
 	def_special ShouldTryGetTrainerScript
 	def_special ShowMapNamePopup
 	def_special ShowMapNamePopup
@@ -403,9 +393,7 @@ gSpecials::
 	def_special ValidateSavedWonderCard
 	def_special HasAtLeastOneBerry
 	def_special IsPokemonJumpSpeciesInParty
-	def_special ShowPokemonJumpRecords
 	def_special IsDodrioInParty
-	def_special ShowDodrioBerryPickingRecords
 	def_special OffsetCameraForBattle
 	def_special GetDeptStoreDefaultFloorChoice
 	def_special BufferVarsForIVRater
@@ -414,8 +402,6 @@ gSpecials::
 	def_special LinkContestTryShowWirelessIndicator
 	def_special LinkContestTryHideWirelessIndicator
 	def_special IsWirelessContest
-	def_special ShowRankingHallRecordsWindow
-	def_special ScrollRankingHallRecordsWindow
 	def_special ShowFrontierManiacMessage
 	def_special IsContestWithRSPlayer
 	def_special ClearLinkContestFlags
@@ -492,7 +478,6 @@ gSpecials::
 	def_special PlayerNotAtTrainerHillEntrance
 	def_special GetBattlePyramidHint
 	def_special LoadLinkContestPlayerPalettes
-	def_special ShowTrainerHillRecords
 	def_special PlayerFaceTrainerAfterBattle
 	def_special ResetHealLocationFromDewford
 	def_special IsLastMonThatKnowsSurf
@@ -501,3 +486,16 @@ gSpecials::
 	def_special RemoveRecordsWindow
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
+	def_special ShowTrainerHillRecords
+	def_special QuizLadyRecordCustomQuizData
+	def_special ShowDodrioBerryPickingRecords
+	def_special ShowLinkBattleRecords
+	def_special ShowPokemonJumpRecords
+	def_special GetRecordedCyclingRoadResults
+	def_special ShowBerryBlenderRecordWindow
+	def_special GetLotadSizeRecordInfo
+	def_special ScrollRankingHallRecordsWindow
+	def_special TryRecordMixLinkup
+	def_special HasStorytellerAlreadyRecorded
+	def_special GetSeedotSizeRecordInfo
+	def_special ShowRankingHallRecordsWindow

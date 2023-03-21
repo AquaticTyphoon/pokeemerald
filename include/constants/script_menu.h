@@ -83,10 +83,10 @@
 #define MULTI_SHARDS_RYBG                  72
 #define MULTI_TOURNEY_WITH_RECORD          73
 #define MULTI_CABLE_CLUB_NO_RECORD_MIX     74
-#define MULTI_WIRELESS_NO_RECORD_BERRY     75
+#define MULTI_WIRELESS_BERRY     75
 #define MULTI_CABLE_CLUB_WITH_RECORD_MIX   76
 #define MULTI_WIRELESS_NO_BERRY            77
-#define MULTI_WIRELESS_NO_RECORD           78
+#define MULTI_WIRELESS           78
 #define MULTI_WIRELESS_ALL_SERVICES        79
 #define MULTI_WIRELESS_MINIGAME            80
 #define MULTI_LINK_LEADER                  81

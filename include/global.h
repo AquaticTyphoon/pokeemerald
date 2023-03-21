@@ -234,31 +234,6 @@ struct BerryCrush
     u32 unk;
 };
 
-struct ApprenticeMon
-{
-    u16 species;
-    u16 moves[MAX_MON_MOVES];
-    u16 item;
-};
-
-// This is for past players Apprentices or Apprentices received via Record Mix.
-// For the current Apprentice, see struct PlayersApprentice
-struct Apprentice
-{
-    u8 id:5;
-    u8 lvlMode:2;
-    //u8 padding1:1;
-    u8 numQuestions;
-    u8 number;
-    //u8 padding2;
-    struct ApprenticeMon party[MULTI_PARTY_SIZE];
-    u16 speechWon[EASY_CHAT_BATTLE_WORDS_COUNT];
-    u8 playerId[TRAINER_ID_LENGTH];
-    u8 playerName[PLAYER_NAME_LENGTH];
-    u8 language;
-    u32 checksum;
-};
-
 struct BattleTowerPokemon
 {
     u16 species;
@@ -440,31 +415,6 @@ struct BattleFrontier
     /*0xEFC*/ struct DomeMonData domePlayerPartyData[FRONTIER_PARTY_SIZE];
 };
 
-struct ApprenticeQuestion
-{
-    u8 questionId:2;
-    u8 monId:2;
-    u8 moveSlot:2;
-    u8 suggestedChange:2; // TRUE if told to use held item or second move, FALSE if told to use no item or first move
-    //u8 padding;
-    u16 data; // used both as an itemId and a moveId
-};
-
-struct PlayersApprentice
-{
-    /*0xB0*/ u8 id;
-    /*0xB1*/ u8 lvlMode:2;  //0: Unassigned, 1: Lv 50, 2: Open Lv
-    /*0xB1*/ u8 questionsAnswered:4;
-    /*0xB1*/ u8 leadMonId:2;
-    /*0xB2*/ u8 party:3;
-             u8 saveId:2;
-             //u8 padding1:3;
-    /*0xB3*/ u8 unused;
-    /*0xB4*/ u8 speciesIds[MULTI_PARTY_SIZE];
-    /*0xB7*/ //u8 padding2;
-    /*0xB8*/ struct ApprenticeQuestion questions[APPRENTICE_MAX_QUESTIONS];
-};
-
 struct RankingHall1P
 {
     u8 id[TRAINER_ID_LENGTH];
@@ -510,8 +460,8 @@ struct SaveBlock2
     /*0xA0*/ struct Time lastBerryTreeUpdate;
     /*0xA8*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
     /*0xAC*/ u32 encryptionKey;
-    /*0xB0*/ struct PlayersApprentice playerApprentice;
-    /*0xDC*/ struct Apprentice apprentices[APPRENTICE_COUNT];
+    /*0xE0*/ u8 aquaticfiller[0x28];
+
     /*0x1EC*/ struct BerryCrush berryCrush;
     /*0x1FC*/ struct PokemonJumpRecords pokeJump;
     /*0x20C*/ struct BerryPickingResults berryPick;
@@ -522,35 +472,6 @@ struct SaveBlock2
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
-
-struct SecretBaseParty
-{
-    u32 personality[PARTY_SIZE];
-    u16 moves[PARTY_SIZE * MAX_MON_MOVES];
-    u16 species[PARTY_SIZE];
-    u16 heldItems[PARTY_SIZE];
-    u8 levels[PARTY_SIZE];
-    u8 EVs[PARTY_SIZE];
-};
-
-struct SecretBase
-{
-    /*0x1A9C*/ u8 secretBaseId;
-    /*0x1A9D*/ bool8 toRegister:4;
-    /*0x1A9D*/ u8 gender:1;
-    /*0x1A9D*/ u8 battledOwnerToday:1;
-    /*0x1A9D*/ u8 registryStatus:2;
-    /*0x1A9E*/ u8 trainerName[PLAYER_NAME_LENGTH];
-    /*0x1AA5*/ u8 trainerId[TRAINER_ID_LENGTH]; // byte 0 is used for determining trainer class
-    /*0x1AA9*/ u8 language;
-    /*0x1AAA*/ u16 numSecretBasesReceived;
-    /*0x1AAC*/ u8 numTimesEntered;
-    /*0x1AAD*/ u8 unused;
-    /*0x1AAE*/ u8 decorations[DECOR_MAX_SECRET_BASE];
-    /*0x1ABE*/ u8 decorationPositions[DECOR_MAX_SECRET_BASE];
-    /*0x1ACE*/ //u8 padding[2];
-    /*0x1AD0*/ struct SecretBaseParty party;
-};
 
 #include "constants/game_stat.h"
 #include "global.fieldmap.h"
@@ -1001,7 +922,7 @@ struct SaveBlock1
     /*0x139C*/ u16 vars[VARS_COUNT];
     /*0x159C*/ u32 gameStats[NUM_GAME_STATS];
     /*0x169C*/ struct BerryTree berryTrees[BERRY_TREES_COUNT];
-    /*0x1A9C*/ struct SecretBase secretBases[SECRET_BASES_COUNT];
+               u32 aquaticfiller2[0x84];
     /*0x271C*/ u8 playerRoomDecorations[DECOR_MAX_PLAYERS_HOUSE];
     /*0x2728*/ u8 playerRoomDecorationPositions[DECOR_MAX_PLAYERS_HOUSE];
     /*0x2734*/ u8 decorationDesks[10];

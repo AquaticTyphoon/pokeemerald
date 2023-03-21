@@ -1,5 +1,4 @@
 #include "constants/global.h"
-#include "constants/apprentice.h"
 #include "constants/battle.h"
 #include "constants/battle_arena.h"
 #include "constants/battle_dome.h"
@@ -648,7 +647,6 @@ EventScript_SetBrineyLocation_Route109::
 
 	.include "data/scripts/pkmn_center_nurse.inc"
 	.include "data/scripts/obtain_item.inc"
-	.include "data/scripts/record_mix.inc"
 	.include "data/scripts/pc.inc"
 
 @ scripts/notices.inc? signs.inc? See comment about text/notices.inc
@@ -824,7 +822,6 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/scripts/elite_four.inc"
 	.include "data/scripts/movement.inc"
 	.include "data/scripts/check_furniture.inc"
-	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
 	.include "data/text/pkmn_center_nurse.inc"
 	.include "data/text/mart_clerk.inc"
@@ -1039,8 +1036,6 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/scripts/cave_hole.inc"
 	.include "data/scripts/lilycove_lady.inc"
 	.include "data/text/match_call.inc"
-	.include "data/scripts/apprentice.inc"
-	.include "data/text/apprentice.inc"
 	.include "data/text/battle_dome.inc"
 	.include "data/scripts/battle_pike.inc"
 	.include "data/text/blend_master.inc"

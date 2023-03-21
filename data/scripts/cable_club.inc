@@ -257,22 +257,11 @@ CableClub_EventScript_UnusedWelcomeToCableClub::
 
 CableClub_EventScript_SelectCableClubRoom::
 	setvar VAR_0x8004, 0
-	goto_if_set FLAG_VISITED_MAUVILLE_CITY, CableClub_EventScript_CableClubUnlockedRecordCorner
 	multichoice 0, 0, MULTI_CABLE_CLUB_NO_RECORD_MIX, FALSE
 	switch VAR_RESULT
 	case 0, CableClub_EventScript_TradeCenter
 	case 1, CableClub_EventScript_Colosseum
 	case 2, CableClub_EventScript_AbortLink
-	case MULTI_B_PRESSED, CableClub_EventScript_AbortLink
-	end
-
-CableClub_EventScript_CableClubUnlockedRecordCorner::
-	multichoice 0, 0, MULTI_CABLE_CLUB_WITH_RECORD_MIX, FALSE
-	switch VAR_RESULT
-	case 0, CableClub_EventScript_TradeCenter
-	case 1, CableClub_EventScript_Colosseum
-	case 2, CableClub_EventScript_RecordCorner
-	case 3, CableClub_EventScript_AbortLink
 	case MULTI_B_PRESSED, CableClub_EventScript_AbortLink
 	end
 
@@ -743,43 +732,6 @@ EventScript_TradeCenter_Chair3::
 	waitstate
 	end
 
-@ VAR_TEMP_1 for below scripts set by ReceiveGiftItem
-EventScript_RecordCenter_Spot0::
-	setvar VAR_0x8005, 0
-	special RecordMixingPlayerSpotTriggered
-	waitstate
-	goto_if_ne VAR_TEMP_1, ITEM_NONE, RecordCorner_EventScript_ReceivedGiftItem
-	end
-
-EventScript_RecordCenter_Spot1::
-	setvar VAR_0x8005, 1
-	special RecordMixingPlayerSpotTriggered
-	waitstate
-	goto_if_ne VAR_TEMP_1, ITEM_NONE, RecordCorner_EventScript_ReceivedGiftItem
-	end
-
-EventScript_RecordCenter_Spot2::
-	setvar VAR_0x8005, 2
-	special RecordMixingPlayerSpotTriggered
-	waitstate
-	goto_if_ne VAR_TEMP_1, ITEM_NONE, RecordCorner_EventScript_ReceivedGiftItem
-	end
-
-EventScript_RecordCenter_Spot3::
-	setvar VAR_0x8005, 3
-	special RecordMixingPlayerSpotTriggered
-	waitstate
-	goto_if_ne VAR_TEMP_1, ITEM_NONE, RecordCorner_EventScript_ReceivedGiftItem
-	end
-
-RecordCorner_EventScript_ReceivedGiftItem::
-	bufferitemname STR_VAR_2, VAR_TEMP_1
-	message RecordCorner_Text_PlayerSentOverOneX
-	waitmessage
-	waitbuttonpress
-	releaseall
-	end
-
 CableClub_EventScript_ReadTrainerCard::
 	msgbox CableClub_Text_GotToLookAtTrainerCard, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
@@ -809,25 +761,6 @@ BattleColosseum_2P_EventScript_Attendant::
 TradeCenter_EventScript_Attendant::
 	special Script_FacePlayer
 	msgbox TradeCenter_Text_TakeSeatStartTrade, MSGBOX_DEFAULT
-	special Script_ClearHeldMovement
-	closemessage
-	end
-
-RecordCorner_EventScript_Attendant::
-	goto_if_ne VAR_TEMP_0, 0, RecordCorner_EventScript_AlreadyMixed
-	special Script_FacePlayer
-	message RecordCorner_Text_TakeSeatAndWait
-	waitmessage
-	waitbuttonpress
-	special Script_ClearHeldMovement
-	closemessage
-	end
-
-RecordCorner_EventScript_AlreadyMixed::
-	special Script_FacePlayer
-	message RecordCorner_Text_ThanksForComing
-	waitmessage
-	waitbuttonpress
 	special Script_ClearHeldMovement
 	closemessage
 	end
@@ -970,8 +903,7 @@ CableClub_EventScript_DirectCornerAttendant::
 CableClub_EventScript_DirectCornerSelectService::
 	checkitem ITEM_POWDER_JAR
 	goto_if_eq VAR_RESULT, FALSE, CableClub_EventScript_DirectCornerNoBerry
-	goto_if_set FLAG_VISITED_MAUVILLE_CITY, CableClub_EventScript_DirectCornerSelectAllServices
-	multichoice 0, 0, MULTI_WIRELESS_NO_RECORD, FALSE
+	multichoice 0, 0, MULTI_WIRELESS, FALSE
 	switch VAR_RESULT
 	case 0, CableClub_EventScript_WirelessTrade
 	case 1, CableClub_EventScript_WirelessBattleSelect
@@ -980,20 +912,10 @@ CableClub_EventScript_DirectCornerSelectService::
 	case MULTI_B_PRESSED, CableClub_EventScript_AbortLink
 	end
 
-CableClub_EventScript_DirectCornerSelectAllServices::
-	multichoice 0, 0, MULTI_WIRELESS_ALL_SERVICES, FALSE
-	switch VAR_RESULT
-	case 0, CableClub_EventScript_WirelessTrade
-	case 1, CableClub_EventScript_WirelessBattleSelect
-	case 2, CableClub_EventScript_WirelessRecordMix
-	case 3, CableClub_EventScript_WirelessBerryCrush
-	case 4, CableClub_EventScript_AbortLink
-	case MULTI_B_PRESSED, CableClub_EventScript_AbortLink
-	end
 
 CableClub_EventScript_DirectCornerNoBerry::
 	goto_if_set FLAG_VISITED_MAUVILLE_CITY, CableClub_EventScript_DirectCornerHasRecordMix
-	multichoice 0, 0, MULTI_WIRELESS_NO_RECORD_BERRY, FALSE
+	multichoice 0, 0, MULTI_WIRELESS_BERRY, FALSE
 	switch VAR_RESULT
 	case 0, CableClub_EventScript_WirelessTrade
 	case 1, CableClub_EventScript_WirelessBattleSelect
