@@ -37,6 +37,8 @@
 #include "window.h"
 #include "mystery_gift_menu.h"
 
+extern u8 gSoftResetFlag;
+
 /*
  * Main menu state machine
  * -----------------------
@@ -713,7 +715,7 @@ static void Task_MainMenuCheckBattery(u8 taskId)
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 7);
 
-        if (!(RtcGetErrorStatus() & RTC_ERR_FLAG_MASK))
+        if (gSoftResetFlag || !(RtcGetErrorStatus() & RTC_ERR_FLAG_MASK))
         {
             gTasks[taskId].func = Task_DisplayMainMenu;
         }
@@ -1077,10 +1079,6 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 break;
             case ACTION_MYSTERY_EVENTS:
                 SetMainCallback2(CB2_InitMysteryEventMenu);
-                DestroyTask(taskId);
-                break;
-            case ACTION_EREADER:
-                SetMainCallback2(CB2_InitEReader);
                 DestroyTask(taskId);
                 break;
             case ACTION_INVALID:

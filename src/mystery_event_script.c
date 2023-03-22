@@ -355,16 +355,6 @@ bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 MEScrCmd_addtrainer(struct ScriptContext *ctx)
-{
-    u32 data = ScriptReadWord(ctx) - ctx->mOffset + ctx->mScriptBase;
-    memcpy(&gSaveBlock2Ptr->frontier.ereaderTrainer, (void *)data, sizeof(gSaveBlock2Ptr->frontier.ereaderTrainer));
-    ValidateEReaderTrainer();
-    StringExpandPlaceholders(gStringVar4, gText_MysteryEventNewTrainer);
-    ctx->mStatus = MEVENT_STATUS_SUCCESS;
-    return FALSE;
-}
-
 bool8 MEScrCmd_enableresetrtc(struct ScriptContext *ctx)
 {
     EnableResetRTC();

@@ -86,15 +86,12 @@ u32 gDamagedSaveSectors;
 u32 gSaveCounter;
 struct SaveSector *gReadWriteSector; // Pointer to a buffer for reading/writing a sector
 u16 gIncrementalSectorId;
-u16 gSaveUnusedVar;
 u16 gSaveFileStatus;
 void (*gGameContinueCallback)(void);
 struct SaveSectorLocation gRamSaveSectorLocations[NUM_SECTORS_PER_SLOT];
-u16 gSaveUnusedVar2;
 u16 gSaveAttemptStatus;
 
 EWRAM_DATA struct SaveSector gSaveDataBuffer = {0}; // Buffer used for reading/writing sectors
-EWRAM_DATA static u8 sUnusedVar = 0;
 
 void ClearSaveData(void)
 {
@@ -730,9 +727,6 @@ u8 HandleSavingData(u8 saveType)
         WriteSaveSectorOrSlot(FULL_SAVE_SLOT, gRamSaveSectorLocations);
         break;
     case SAVE_LINK:
-    case SAVE_EREADER: // Dummied, now duplicate of SAVE_LINK
-        // Used by link / Battle Frontier
-        // Write only SaveBlocks 1 and 2 (skips the PC)
         CopyPartyAndObjectsToSave();
         for(i = SECTOR_ID_SAVEBLOCK2; i <= SECTOR_ID_SAVEBLOCK1_END; i++)
             HandleReplaceSector(i, gRamSaveSectorLocations);

@@ -1661,9 +1661,6 @@ u8 GetFontAttribute(u8 fontId, u8 attributeId)
         case FONTATTR_LINE_SPACING:
             result = sFontInfos[fontId].lineSpacing;
             break;
-        case FONTATTR_UNKNOWN:
-            result = sFontInfos[fontId].unk;
-            break;
         case FONTATTR_COLOR_FOREGROUND:
             result = sFontInfos[fontId].fgColor;
             break;

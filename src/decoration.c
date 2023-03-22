@@ -122,7 +122,7 @@ EWRAM_DATA static u8 sDecor_CameraSpriteObjectIdx1 = 0;
 EWRAM_DATA static u8 sDecor_CameraSpriteObjectIdx2 = 0;
 EWRAM_DATA static u8 sDecorationLastDirectionMoved = 0;
 EWRAM_DATA static struct OamData sDecorSelectorOam = {};
-EWRAM_DATA static struct DecorRearrangementDataBuffer sDecorRearrangementDataBuffer[0] = {};
+EWRAM_DATA static struct DecorRearrangementDataBuffer sDecorRearrangementDataBuffer[16] = {};
 EWRAM_DATA static u8 sCurDecorSelectedInRearrangement = 0;
 
 static void HandleDecorationActionsMenuInput(u8 taskId);

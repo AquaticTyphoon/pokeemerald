@@ -22,11 +22,7 @@ TrainerHill_Entrance_OnWarp:
 
 TrainerHill_Entrance_OnResume:
 	trainerhill_resumetimer
-	setvar VAR_TEMP_0, 0
-	trainerhill_getusingereader
-	goto_if_eq VAR_RESULT, FALSE, TrainerHill_Entrance_EventScript_TryFaceAttendant  @ VAR_RESULT always FALSE here
-	setobjectxy OBJ_EVENT_ID_PLAYER, 9, 6
-	applymovement OBJ_EVENT_ID_PLAYER, TrainerHill_Entrance_Movement_PlayerFaceAttendant
+	goto TrainerHill_Entrance_EventScript_TryFaceAttendant
 	end
 
 TrainerHill_Entrance_EventScript_TryFaceAttendant::

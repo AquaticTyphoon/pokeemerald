@@ -1277,10 +1277,6 @@ u16 GetBattleTowerSinglesStreak(void)
     return GetGameStat(GAME_STAT_BATTLE_TOWER_SINGLES_STREAK);
 }
 
-void BufferEReaderTrainerName(void)
-{
-    GetEreaderTrainerName(gStringVar1);
-}
 
 u16 GetSlotMachineId(void)
 {

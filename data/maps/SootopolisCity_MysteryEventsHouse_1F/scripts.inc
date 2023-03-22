@@ -70,9 +70,6 @@ SootopolisCity_MysteryEventsHouse_1F_Movement_OldManWalkBehindPlayer:
 SootopolisCity_MysteryEventsHouse_1F_EventScript_OldMan::
 	lock
 	faceplayer
-	frontier_checkvisittrainer
-	goto_if_eq VAR_RESULT, 1, SootopolisCity_MysteryEventsHouse_1F_EventScript_InvalidVisitingTrainer
-	goto_if_eq VAR_TEMP_1, 1, SootopolisCity_MysteryEventsHouse_1F_EventScript_TrainerVisiting
 	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_OnlyAmusementWatchingBattles, MSGBOX_DEFAULT
 	release
 	end
@@ -82,29 +79,6 @@ SootopolisCity_MysteryEventsHouse_1F_EventScript_InvalidVisitingTrainer::
 	release
 	end
 
-SootopolisCity_MysteryEventsHouse_1F_EventScript_TrainerVisiting::
-	special SavePlayerParty
-	special BufferEReaderTrainerName
-	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_ChallengeVisitingTrainer, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SootopolisCity_MysteryEventsHouse_1F_EventScript_DeclineBattle
-	call SootopolisCity_MysteryEventsHouse_1F_EventScript_ChooseParty
-	goto_if_eq VAR_RESULT, 0, SootopolisCity_MysteryEventsHouse_1F_EventScript_DeclineBattle
-	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_SaveProgressBeforeBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SootopolisCity_MysteryEventsHouse_1F_EventScript_DeclineBattle
-	special LoadPlayerParty
-	call Common_EventScript_SaveGame
-	goto_if_eq VAR_RESULT, FALSE, SootopolisCity_MysteryEventsHouse_1F_EventScript_DeclineBattle
-	special SavePlayerParty
-	special ReducePlayerPartyToSelectedMons
-	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_HopeToSeeGoodMatch, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_FACING, DIR_NORTH, SootopolisCity_MysteryEventsHouse_1F_EventScript_EnterBasementNorth
-	call_if_eq VAR_FACING, DIR_EAST, SootopolisCity_MysteryEventsHouse_1F_EventScript_EnterBasementEast
-	call_if_eq VAR_FACING, DIR_WEST, SootopolisCity_MysteryEventsHouse_1F_EventScript_EnterBasementWest
-	warp MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_B1F, 3, 1
-	waitstate
-	release
-	end
 
 SootopolisCity_MysteryEventsHouse_1F_EventScript_DeclineBattle::
 	special LoadPlayerParty

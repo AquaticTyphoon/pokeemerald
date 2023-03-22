@@ -221,10 +221,6 @@ static u32 Server_Run(struct MysteryGiftServer * svr)
         else
             MysteryGiftServer_InitSend(svr, MG_LINKID_CLIENT_SCRIPT, cmd->ptr, cmd->parameter);
         break;
-    case SVR_LOAD_EREADER_TRAINER:
-        AGB_ASSERT(cmd->parameter == 0);
-        MysteryGiftServer_InitSend(svr, MG_LINKID_EREADER_TRAINER, cmd->ptr, sizeof(struct BattleTowerEReaderTrainer));
-        break;
     case SVR_LOAD_MSG:
         MysteryGiftServer_InitSend(svr, MG_LINKID_DYNAMIC_MSG, cmd->ptr, cmd->parameter);
         break;
