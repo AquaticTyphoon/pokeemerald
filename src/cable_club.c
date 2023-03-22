@@ -803,11 +803,6 @@ static void Task_ReestablishLinkAwaitConfirmation(u8 taskId)
     }
 }
 
-// Unused
-void CableClubSaveGame(void)
-{
-    SaveGame();
-}
 
 static void SetLinkBattleTypeFlags(int linkService)
 {

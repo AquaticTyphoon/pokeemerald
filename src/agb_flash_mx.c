@@ -9,6 +9,9 @@ const u16 mxMaxTime[] =
     2000, 65469, TIMER_ENABLE | TIMER_INTR_ENABLE | TIMER_256CLK,
 };
 
+//Found save stuff potentialy.
+//new code?
+
 const struct FlashSetupInfo MX29L010 =
 {
     ProgramFlashByte_MX,
@@ -18,7 +21,7 @@ const struct FlashSetupInfo MX29L010 =
     WaitForFlashWrite_Common,
     mxMaxTime,
     {
-        131072, // ROM size
+        FLASH_ROM_SIZE_1M, // ROM size
         {
             4096, // sector size
               12, // bit shift to multiply by sector size (4096 == 1 << 12)
@@ -39,7 +42,7 @@ const struct FlashSetupInfo DefaultFlash =
     WaitForFlashWrite_Common,
     mxMaxTime,
     {
-        131072, // ROM size
+        FLASH_ROM_SIZE_1M, // ROM size
         {
             4096, // sector size
               12, // bit shift to multiply by sector size (4096 == 1 << 12)
